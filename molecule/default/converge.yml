@@ -1,0 +1,28 @@
+---
+- name: Converge
+  hosts: all
+
+  tasks:
+    - name: "Include palekiwi.neovim"
+      ansible.builtin.include_role:
+        name: "palekiwi.neovim"
+
+    - name: Cat contents of config-packer.lua
+      ansible.builtin.command:
+        cmd: "cat ~/.config/nvim/lua/config-packer.lua"
+      changed_when: false
+      register: configpacker
+
+    - name: Cat contents of config-packer.lua
+      ansible.builtin.debug:
+        var: configpacker.stdout_lines
+
+    - name: Cat contents of init.lua
+      ansible.builtin.command:
+        cmd: "cat ~/.config/nvim/init.lua"
+      changed_when: false
+      register: init
+
+    - name: Cat contents of init.lua
+      ansible.builtin.debug:
+        var: init.stdout_lines

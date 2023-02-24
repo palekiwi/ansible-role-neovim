@@ -1,0 +1,72 @@
+---
+- name: Ensure required packages are installed.
+  ansible.builtin.package:
+    name:
+      - npm
+      - typescript
+      - ansible
+      - ansible-lint
+    state: present
+  become: true
+
+- name: Require lsp-config in packer
+  ansible.builtin.blockinfile:
+    path: "{{ nvim_dir }}/lua/config-packer.lua"
+    marker: "-- {mark} ANSIBLE MANAGED BLOCK: LSP"
+    insertbefore: "--> LSP plugins end"
+    block: |2
+        use 'neovim/nvim-lspconfig'           -- Collection of configurations for built-in LSP client
+        use 'hrsh7th/nvim-cmp'                -- Autocompletion plugin
+        use 'hrsh7th/cmp-nvim-lsp'            -- LSP source for nvim-cmp
+        use 'saadparwaiz1/cmp_luasnip'        -- Snippets source for nvim-cmp
+        use 'L3MON4D3/LuaSnip'                -- Snippets plugin
+        use 'onsails/lspkind.nvim'            -- Pictograms for lsp
+  notify: PackerSync
+
+- name: Copy lsp configuration files
+  ansible.builtin.copy:
+    src: "files/lua/{{ item }}"
+    dest: "{{ nvim_dir }}/lua/{{ item }}"
+    mode: "0644"
+  loop:
+    - config-lsp.lua
+    - config-cmp.lua
+    - settings.lua
+    - mappings.lua
+
+- name: Install language servers from npm.
+  community.general.npm:
+    name: "{{ item.package }}"
+    global: true
+    state: present
+  loop: "{{ lsp_servers }}"
+  when: "lsp_servers is defined and (lsp_servers | length > 0) and item.method == 'npm'"
+  become: true
+
+- name: Install language servers from system repositories.
+  ansible.builtin.package:
+    name: "{{ item.package }}"
+    state: present
+  loop: "{{ lsp_servers }}"
+  when: "lsp_servers is defined and (lsp_servers | length > 0) and item.method == 'system'"
+  become: true
+
+- name: Add servers to config-lsp.lua
+  ansible.builtin.blockinfile:
+    path: "{{ nvim_dir }}/lua/config-lsp.lua"
+    insertafter: "-- LSP Servers"
+    block: |2
+        '{{ item.name }}',
+    marker: "  -- {mark} ANSIBLE MANAGED BLOCK {{ item.name }}"
+  loop: "{{ lsp_servers }}"
+
+- name: Require lsp-config in init.lua
+  ansible.builtin.lineinfile:
+    path: "{{ nvim_dir }}/init.lua"
+    search_string: "require('{{ item }}')"
+    line: "require('{{ item }}')"
+  loop:
+    - "config-lsp"
+    - "config-cmp"
+    - "settings"
+    - "mappings"

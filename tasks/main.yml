@@ -1,0 +1,47 @@
+---
+- name: Ensure that essential packages are installed.
+  ansible.builtin.package:
+    name:
+      - git
+      - neovim
+    state: present
+  become: true
+
+- name: Ensure that packer is installed
+  ansible.builtin.git:
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    depth: 1
+    version: master
+
+- name: Ensure nvim directory exists.
+  ansible.builtin.file:
+    path: "{{ nvim_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Ensure nvim/lua directory exists.
+  ansible.builtin.file:
+    path: "{{ nvim_dir }}/lua"
+    state: directory
+    mode: "0755"
+
+- name: Copy base configuration files
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: "0644"
+  loop:
+    - src: files/init.lua
+      dest: "{{ nvim_dir }}/init.lua"
+
+    - src: files/lua/config-packer.lua
+      dest: "{{ nvim_dir }}/lua/config-packer.lua"
+  notify: PackerSync
+
+- name: Install LSP
+  ansible.builtin.import_tasks: "lsp.yml"
+
+- name: Install TreeSitter
+  ansible.builtin.import_tasks: "treesitter.yml"
+  when: install_treesitter
