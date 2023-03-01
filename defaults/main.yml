@@ -1,6 +1,28 @@
 ---
 nvim_dir: ~/.config/nvim
+plugins_dir: ~/.config/nvim/lua/plugins
+config_dir: ~/.config/nvim/lua/config
+
+install_lsp: true
 install_treesitter: true
+
+plugins:
+  - name: nightfox
+    use: "use 'EdenEast/nightfox.nvim'"
+  - name: web-devicons
+    use: "use 'nvim-tree/nvim-web-devicons'"
+  - name: nvim-tree
+    use: "use 'nvim-tree/nvim-tree.lua'"
+  - name: notify
+    use: "use 'rcarriga/nvim-notify'"
+  - name: hop
+    use: "use { 'phaazon/hop.nvim', branch = 'v2' }"
+  - name: lualine
+    use: "use 'nvim-lualine/lualine.nvim'"
+  - name: autopairs
+    use: "use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup {} end }"
+  - name: surround
+    use: "use({ 'kylechui/nvim-surround', tag = '*', config = function() require('nvim-surround').setup({}) end })"
 
 lsp_servers:
   - name: "ansiblels"

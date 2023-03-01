@@ -1,0 +1,18 @@
+---
+- name: Copy config files
+  ansible.builtin.copy:
+    src: "files/lua/config/{{ item }}"
+    dest: "{{ config_dir }}/{{ item }}"
+    mode: "0644"
+  loop:
+    - settings.lua
+    - mappings.lua
+
+- name: Require config files in init.lua
+  ansible.builtin.lineinfile:
+    path: "{{ nvim_dir }}/init.lua"
+    search_string: "require('{{ item }}')"
+    line: "require('{{ item }}')"
+  loop:
+    - "config.settings"
+    - "config.mappings"

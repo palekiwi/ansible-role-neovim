@@ -6,9 +6,9 @@
     state: present
   become: true
 
-- name: Insert TreeSiter block in config-packer.lua
+- name: Insert TreeSiter block in plugins/packer.lua
   ansible.builtin.blockinfile:
-    path: "{{ nvim_dir }}/lua/config-packer.lua"
+    path: "{{ plugins_dir }}/packer.lua"
     marker: "  -- {mark} ANSIBLE MANAGED BLOCK: TREESITTER"
     insertbefore: "--> regular plugins end"
     block: |2
@@ -16,27 +16,24 @@
               'nvim-treesitter/nvim-treesitter',
               run = ':TSUpdate'
         }
-  notify: PackerSync
-
-- name: Test block insert
-  ansible.builtin.blockinfile:
-    path: "{{ nvim_dir }}/lua/config-packer.lua"
-    marker: "-- {mark} ANSIBLE MANAGED BLOCK: Something"
-    state: absent
-    insertbefore: "--> regular plugins end"
-    block: |2
-      -- use { 'nvim-treesitter/nvim-treesitter' }
+        use 'nvim-treesitter/nvim-treesitter-refactor'
   notify: PackerSync
 
 - name: Copy TreeSitter configuration files.
   ansible.builtin.copy:
-    src: files/lua/config-treesitter.lua
-    dest: "{{ nvim_dir }}/lua/config-treesitter.lua"
+    src: files/lua/plugins/treesitter.lua
+    dest: "{{ plugins_dir }}/{{ item }}.lua"
     mode: "0644"
+  loop:
+    - treesitter
+    - treesitter-refactor
   notify: PackerSync
 
-- name: Require TreeSitter in init.lua
+- name: Require TreeSitter plugins in init.lua
   ansible.builtin.lineinfile:
     path: "{{ nvim_dir }}/init.lua"
-    regexp: "^require\\('config-treesitter'\\)"
-    line: "require('config-treesitter')"
+    search_string: "require('plugins.{{ item }}')"
+    line: "require('plugins.{{ item }}')"
+  loop:
+    - treesitter
+    - treesitter-refactor

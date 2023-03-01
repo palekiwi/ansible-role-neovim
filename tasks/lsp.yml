@@ -11,7 +11,7 @@
 
 - name: Require lsp-config in packer
   ansible.builtin.blockinfile:
-    path: "{{ nvim_dir }}/lua/config-packer.lua"
+    path: "{{ plugins_dir }}/packer.lua"
     marker: "-- {mark} ANSIBLE MANAGED BLOCK: LSP"
     insertbefore: "--> LSP plugins end"
     block: |2
@@ -23,16 +23,14 @@
         use 'onsails/lspkind.nvim'            -- Pictograms for lsp
   notify: PackerSync
 
-- name: Copy lsp configuration files
+- name: Copy lsp plugin files
   ansible.builtin.copy:
-    src: "files/lua/{{ item }}"
-    dest: "{{ nvim_dir }}/lua/{{ item }}"
+    src: "files/lua/plugins/{{ item }}"
+    dest: "{{ plugins_dir }}/{{ item }}"
     mode: "0644"
   loop:
-    - config-lsp.lua
-    - config-cmp.lua
-    - settings.lua
-    - mappings.lua
+    - lsp.lua
+    - cmp.lua
 
 - name: Install language servers from npm.
   community.general.npm:
@@ -51,9 +49,9 @@
   when: "lsp_servers is defined and (lsp_servers | length > 0) and item.method == 'system'"
   become: true
 
-- name: Add servers to config-lsp.lua
+- name: Add servers to plugins/lsp.lua
   ansible.builtin.blockinfile:
-    path: "{{ nvim_dir }}/lua/config-lsp.lua"
+    path: "{{ plugins_dir }}/lsp.lua"
     insertafter: "-- LSP Servers"
     block: |2
         '{{ item.name }}',
@@ -66,7 +64,5 @@
     search_string: "require('{{ item }}')"
     line: "require('{{ item }}')"
   loop:
-    - "config-lsp"
-    - "config-cmp"
-    - "settings"
-    - "mappings"
+    - "plugins.lsp"
+    - "plugins.cmp"

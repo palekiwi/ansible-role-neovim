@@ -1,0 +1,25 @@
+---
+- name: Insert plugins block in plugins/packer.lua
+  ansible.builtin.blockinfile:
+    path: "{{ plugins_dir }}/packer.lua"
+    marker: "  -- {mark} ANSIBLE MANAGED BLOCK: {{ item.name }}"
+    insertbefore: "--> regular plugins end"
+    block: |2
+        {{ item.use }}
+  notify: PackerSync
+  loop: "{{ plugins }}"
+
+- name: Copy TreeSitter configuration files.
+  ansible.builtin.copy:
+    src: "files/lua/plugins/{{ item.name }}.lua"
+    dest: "{{ plugins_dir }}/{{ item.name }}.lua"
+    mode: "0644"
+  notify: PackerSync
+  loop: "{{ plugins }}"
+
+- name: Require TreeSitter in init.lua
+  ansible.builtin.lineinfile:
+    path: "{{ nvim_dir }}/init.lua"
+    search_string: "require('plugins.{{ item.name }}')"
+    line: "require('plugins.{{ item.name }}')"
+  loop: "{{ plugins }}"

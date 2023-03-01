@@ -1,6 +1,8 @@
 local set = vim.opt
- 
+
 set.termguicolors = true
+
+vim.notify = require("notify")
 
 set.expandtab = true
 set.smarttab = true

@@ -9,7 +9,7 @@
 
     - name: Cat contents of config-packer.lua
       ansible.builtin.command:
-        cmd: "cat ~/.config/nvim/lua/config-packer.lua"
+        cmd: "cat ~/.config/nvim/lua/plugins/packer.lua"
       changed_when: false
       register: configpacker
 
