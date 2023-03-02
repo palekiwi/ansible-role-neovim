@@ -24,6 +24,7 @@
     src: files/lua/plugins/treesitter.lua
     dest: "{{ plugins_dir }}/{{ item }}.lua"
     mode: "0644"
+    force: false
   loop:
     - treesitter
     - treesitter-refactor

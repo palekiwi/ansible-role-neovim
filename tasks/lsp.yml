@@ -28,6 +28,7 @@
     src: "files/lua/plugins/{{ item }}"
     dest: "{{ plugins_dir }}/{{ item }}"
     mode: "0644"
+    force: false
   loop:
     - lsp.lua
     - cmp.lua
