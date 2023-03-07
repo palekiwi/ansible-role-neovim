@@ -19,4 +19,13 @@ vim.keymap.set('', 'T', function()
   hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
 end, {remap=true})
 
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
+-- HopLine
+map('n', 'l', ':HopLine<CR>', opts)
+
+-- HopLineStart
+map('n', '<S-l>', ':HopLineStart<CR>', opts)
+
 require'hop'.setup()
