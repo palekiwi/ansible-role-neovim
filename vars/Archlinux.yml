@@ -1,0 +1,34 @@
+---
+# Lsp
+lsp_packages:
+  - npm
+  - typescript
+
+lsp_servers:
+  - name: "ansiblels"
+    package: "@ansible/ansible-language-server"
+    method: npm
+
+  - name: "astro"
+    package: "@astrojs/language-server"
+    method: npm
+
+  - name: "pyright"
+    package: "pyright"
+    method: npm
+
+  - name: "rust_analyzer"
+    package: "rust-analyzer"
+    method: system
+
+  - name: "tailwindcss"
+    package: "@tailwindcss/language-server"
+    method: npm
+
+  - name: "tsserver"
+    package: "typescript-language-server"
+    method: npm
+
+# Tree Sitter
+treesitter_packages:
+  - base-devel

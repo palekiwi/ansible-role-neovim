@@ -22,13 +22,13 @@ plugins:
   - name: lualine
     use: "use 'nvim-lualine/lualine.nvim'"
   - name: jinja
-    use: "use 'HiPhish/jinja.vim'" 
+    use: "use 'HaiPhish/jinja.vim'"
   - name: null-ls
     use: "use 'jose-elias-alvarez/null-ls.nvim'"
   - name: prettier
     use: "use 'MunifTanjim/prettier.nvim'"
   - name: visual-multi
-    use: "use 'mg979/vim-visual-multi'" 
+    use: "use 'mg979/vim-visual-multi'"
   - name: autopairs
     use: "use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup {} end }"
   - name: surround
@@ -41,20 +41,8 @@ lsp_servers:
     package: "@ansible/ansible-language-server"
     method: npm
 
-  - name: "astro"
-    package: "@astrojs/language-server"
-    method: npm
-
   - name: "pyright"
     package: "pyright"
-    method: npm
-
-  - name: "rust_analyzer"
-    package: "rust-analyzer"
-    method: system
-
-  - name: "tailwindcss"
-    package: "@tailwindcss/language-server"
     method: npm
 
   - name: "tsserver"

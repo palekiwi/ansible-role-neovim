@@ -1,0 +1,22 @@
+---
+# Lsp
+lsp_packages:
+  - npm
+  - node-typescript
+
+lsp_servers:
+  - name: "ansiblels"
+    package: "@ansible/ansible-language-server"
+    method: npm
+
+  - name: "pyright"
+    package: "pyright"
+    method: npm
+
+  - name: "tsserver"
+    package: "typescript-language-server"
+    method: npm
+
+# Tree-sitter
+treesitter_packages:
+  - gcc

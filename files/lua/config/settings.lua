@@ -37,3 +37,13 @@ vim.filetype.add({
     ['.*/molecule/.*.ya?ml'] = 'yaml.ansible',
   },
 })
+
+-- python indent
+vim.g["python_indent"] = {
+  disable_parentheses_indenting = 'v:false',
+  closed_paren_align_last_line = 'v:false',
+  searchpair_timeout = '150',
+  continue = 'shiftwidth() * 1',
+  open_paren = 'shiftwidth() * 1',
+  nested_paren = 'shiftwidth()'
+}

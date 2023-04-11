@@ -1,10 +1,10 @@
 ---
 - name: Ensure TreeSitter dependencies are installed.
   ansible.builtin.package:
-    name:
-      - base-devel
+    name: "{{ item }}"
     state: present
   become: true
+  loop: "{{ treesitter_packages }}"
 
 - name: Insert TreeSiter block in plugins/packer.lua
   ansible.builtin.blockinfile:
