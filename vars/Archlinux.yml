@@ -13,6 +13,10 @@ lsp_servers:
     package: "@astrojs/language-server"
     method: npm
 
+  - name: "clangd"
+    package: "clang"
+    method: system
+
   - name: "pyright"
     package: "pyright"
     method: npm
