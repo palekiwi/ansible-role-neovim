@@ -2,6 +2,7 @@
 - name: Copy config files
   ansible.builtin.copy:
     src: "files/lua/config/{{ item }}"
+    force: false
     dest: "{{ config_dir }}/{{ item }}"
     mode: "0644"
   loop:
