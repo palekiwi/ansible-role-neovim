@@ -41,6 +41,8 @@ plugins:
     use: "use({ 'kylechui/nvim-surround', tag = '*', config = function() require('nvim-surround').setup({}) end })"
   - name: telescope
     use: "use { 'nvim-telescope/telescope.nvim', tag = '0.1.1', requires = { {'nvim-lua/plenary.nvim'} } }"
+  - name: chatgpt
+    use: "use({ 'jackMort/ChatGPT.nvim', requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' } })"
 
 lsp_servers:
   - name: "ansiblels"
