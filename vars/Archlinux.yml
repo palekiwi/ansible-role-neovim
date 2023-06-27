@@ -1,8 +1,8 @@
 ---
-# Lsp
-lsp_packages:
+lsp_system_packages:
   - npm
   - typescript
+  - prettier
 
 lsp_servers:
   - ansiblels
@@ -13,6 +13,5 @@ lsp_servers:
   - tailwindcss
   - tsserver
 
-# Tree Sitter
 treesitter_packages:
   - base-devel

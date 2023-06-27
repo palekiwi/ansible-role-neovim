@@ -1,18 +1,4 @@
 ---
-nvim_dir: ~/.config/nvim
-plugins_dir: ~/.config/nvim/lua/plugins
-config_dir: ~/.config/nvim/lua/config
-snippets_dir: ~/.config/nvim/snippets
-
-plugin_manager: packer
-
-use_lsp: true
-use_treesitter: true
-
-install_snippets: false
-snippets_repos:
-  - git@github.com:dhammafarer/snippets.git
-
 packer_plugins:
   - name: nightfox
     use: "use 'EdenEast/nightfox.nvim'"

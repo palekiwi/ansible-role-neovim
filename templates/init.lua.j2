@@ -10,6 +10,14 @@
   -- packer plugins end
 {% endif %}
 
+{% if use_lsp %}
+  -- lsp config start
+  {% for item in lsp_config_modules %}
+    require('plugins.{{ item }}')
+  {% endfor %}
+  -- lsp config end
+{% endif %}
+
 -- config start
   require('config.settings')
   require('config.mappings')
