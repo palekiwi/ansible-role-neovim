@@ -4,7 +4,7 @@
     name: "{{ item }}"
     state: present
   become: true
-  loop: "{{ lsp_packages }}"
+  loop: "{{ lsp_system_packages }}"
 
 - name: Require lsp-config in packer
   ansible.builtin.blockinfile:

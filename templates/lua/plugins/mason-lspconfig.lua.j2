@@ -1,0 +1,10 @@
+-- Ansible managed
+
+require("mason-lspconfig").setup {
+    ensure_installed = {
+      {% for item in lsp_servers %}
+        "{{ item }}",
+      {% endfor %}
+    },
+    automatic_installation = false,
+}

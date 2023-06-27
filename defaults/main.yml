@@ -4,15 +4,16 @@ plugins_dir: ~/.config/nvim/lua/plugins
 config_dir: ~/.config/nvim/lua/config
 snippets_dir: ~/.config/nvim/snippets
 
-install_lsp: true
-install_treesitter: true
+plugin_manager: packer
 
-install_snippets: true
+use_lsp: true
+use_treesitter: true
 
+install_snippets: false
 snippets_repos:
   - git@github.com:dhammafarer/snippets.git
 
-plugins:
+packer_plugins:
   - name: nightfox
     use: "use 'EdenEast/nightfox.nvim'"
   - name: web-devicons
@@ -27,12 +28,6 @@ plugins:
     use: "use { 'phaazon/hop.nvim', branch = 'v2' }"
   - name: lualine
     use: "use 'nvim-lualine/lualine.nvim'"
-  - name: jinja
-    use: "use 'HaiPhish/jinja.vim'"
-  - name: null-ls
-    use: "use 'jose-elias-alvarez/null-ls.nvim'"
-  - name: prettier
-    use: "use 'MunifTanjim/prettier.nvim'"
   - name: visual-multi
     use: "use 'mg979/vim-visual-multi'"
   - name: autopairs
@@ -41,18 +36,7 @@ plugins:
     use: "use({ 'kylechui/nvim-surround', tag = '*', config = function() require('nvim-surround').setup({}) end })"
   - name: telescope
     use: "use { 'nvim-telescope/telescope.nvim', tag = '0.1.1', requires = { {'nvim-lua/plenary.nvim'} } }"
+
+packer_plugins_extra:
   - name: chatgpt
     use: "use({ 'jackMort/ChatGPT.nvim', requires = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' } })"
-
-lsp_servers:
-  - name: "ansiblels"
-    package: "@ansible/ansible-language-server"
-    method: npm
-
-  - name: "pyright"
-    package: "pyright"
-    method: npm
-
-  - name: "tsserver"
-    package: "typescript-language-server"
-    method: npm

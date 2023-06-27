@@ -1,0 +1,30 @@
+-- Ansible managed
+
+return require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
+
+  --> regular plugins start
+  {% for item in packer_plugins %}
+    {{ item.use }}
+  {% endfor %}
+  --> regular plugins end
+
+  {% if use_lsp %}
+    --> LSP plugins start
+    use 'jose-elias-alvarez/null-ls.nvim' -- inject LSP features into nvim
+    use 'neovim/nvim-lspconfig'           -- Collection of configurations for built-in LSP client
+    use 'MunifTanjim/prettier.nvim'       -- Prettier
+    use 'hrsh7th/nvim-cmp'                -- Autocompletion plugin
+    use 'hrsh7th/cmp-nvim-lsp'            -- LSP source for nvim-cmp
+    use 'saadparwaiz1/cmp_luasnip'        -- Snippets source for nvim-cmp
+    use 'L3MON4D3/LuaSnip'                -- Snippets plugin
+    use 'onsails/lspkind.nvim'            -- Pictograms for lsp
+    --> LSP plugins end
+  {% endif %}
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)

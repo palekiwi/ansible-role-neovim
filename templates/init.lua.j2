@@ -1,0 +1,16 @@
+-- Ansible managed
+
+{% if plugin_manager == "packer" %}
+  require('plugins.packer')
+
+  -- packer plugins start
+  {% for item in packer_plugins %}
+    require('plugins.{{ item.name }}')
+  {% endfor %}
+  -- packer plugins end
+{% endif %}
+
+-- config start
+  require('config.settings')
+  require('config.mappings')
+-- config end

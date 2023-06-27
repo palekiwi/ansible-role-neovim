@@ -10,14 +10,6 @@
     state: present
   become: true
 
-- name: Ensure that packer is installed
-  ansible.builtin.git:
-    repo: https://github.com/wbthomason/packer.nvim
-    dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-    depth: 1
-    version: master
-
-
 - name: Ensure required directories exists.
   ansible.builtin.file:
     path: "{{ item }}"
@@ -28,22 +20,31 @@
     - "{{ config_dir }}"
     - "{{ plugins_dir }}"
 
-- name: Copy base configuration files
-  ansible.builtin.copy:
+- name: Install init.lua.
+  ansible.builtin.template:
+    src: templates/init.lua.j2
+    dest: "{{ nvim_dir }}/init.lua"
+    mode: "0644"
+    force: true
+
+- name: Install config templates
+  ansible.builtin.template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     mode: "0644"
     force: false
   loop:
-    - src: files/init.lua
-      dest: "{{ nvim_dir }}/init.lua"
+    - src: "templates/lua/config/mappings.lua.j2"
+      dest: "{{ config_dir }}/mappings.lua"
+    - src: "templates/lua/config/settings.lua.j2"
+      dest: "{{ config_dir }}/settings.lua"
 
-    - src: files/lua/plugins/packer.lua
-      dest: "{{ plugins_dir }}/packer.lua"
-  notify: PackerSync
+- name: Install plugins with packer.
+  when: plugin_manager == "packer"
+  ansible.builtin.import_tasks: "packer.yml"
 
-- name: Install plugins
-  ansible.builtin.import_tasks: "plugins.yml"
+- name: Fail
+  ansible.builtin.fail:
 
 - name: Install LSP
   ansible.builtin.import_tasks: "lsp.yml"
