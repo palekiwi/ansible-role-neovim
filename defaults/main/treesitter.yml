@@ -10,12 +10,3 @@ treesitter_config_modules:
 
 treesitter_auto_install: "true"
 treesitter_sync_install: "false"
-
-treesitter_parsers:
-  - "c"
-  - "rust"
-  - "vimdoc"
-  - "ini"
-  - "json"
-  - "lua"
-  - "yaml"

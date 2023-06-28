@@ -3,27 +3,8 @@ lsp_system_packages:
   - npm
   - typescript
   - prettier
-
-lsp_servers:
-  - ansiblels
-  - astro
-  - clangd
-  - pyright
-  - rust_analyzer
-  - tailwindcss
-  - tsserver
+  - wget
+  - unzip
 
 treesitter_system_packages:
   - base-devel
-
-treesitter_parsers:
-  - "astro"
-  - "c"
-  - "cpp"
-  - "rust"
-  - "vimdoc"
-  - "ini"
-  - "json"
-  - "lua"
-  - "python"
-  - "yaml"

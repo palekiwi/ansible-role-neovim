@@ -1,0 +1,18 @@
+---
+treesitter_parsers:
+  - "c"
+  - "rust"
+  - "vimdoc"
+  - "ini"
+  - "json"
+  - "lua"
+  - "yaml"
+
+lsp_servers:
+  - ansiblels
+  - astro
+  - clangd
+  - pyright
+  - rust_analyzer
+  - tailwindcss
+  - tsserver

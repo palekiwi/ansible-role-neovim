@@ -3,6 +3,8 @@ lsp_system_packages: []
 
 lsp_packer_plugins:
   - use 'jose-elias-alvarez/null-ls.nvim'
+  - use { "williamboman/mason.nvim", run = ":MasonUpdate" }
+  - use 'williamboman/mason-lspconfig.nvim'
   - use 'neovim/nvim-lspconfig'
   - use 'MunifTanjim/prettier.nvim'
   - use 'hrsh7th/nvim-cmp'
@@ -12,8 +14,10 @@ lsp_packer_plugins:
   - use 'onsails/lspkind.nvim'
 
 lsp_config_modules:
+  - mason
+  - mason-lspconfig
   - lsp
   - cmp
   - prettier
 
-lsp_servers: []
+lsp_automatic_installation: "true"

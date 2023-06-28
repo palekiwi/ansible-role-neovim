@@ -6,5 +6,5 @@ require("mason-lspconfig").setup {
         "{{ item }}",
       {% endfor %}
     },
-    automatic_installation = false,
+    automatic_installation = {{ lsp_automatic_installation }},
 }
