@@ -20,24 +20,21 @@
     - "{{ config_dir }}"
     - "{{ plugins_dir }}"
 
-# Config
 - name: Install config files
   ansible.builtin.import_tasks: "config.yml"
 
-# Packer
 - name: Install plugins with packer.
   ansible.builtin.import_tasks: "packer.yml"
   when: plugin_manager == "packer"
 
-# LSP
 - name: Install LSP
   ansible.builtin.import_tasks: "lsp.yml"
   when: use_lsp
 
-- name: Fail
-  ansible.builtin.fail:
-
-# TreeSitter
 - name: Install TreeSitter
   ansible.builtin.import_tasks: "treesitter.yml"
   when: use_treesitter
+
+- name: Clone snippets.
+  ansible.builtin.import_tasks: "snippets.yml"
+  when: install_snippets

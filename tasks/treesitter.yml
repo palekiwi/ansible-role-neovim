@@ -4,37 +4,13 @@
     name: "{{ item }}"
     state: present
   become: true
-  loop: "{{ treesitter_packages }}"
+  loop: "{{ treesitter_system_packages }}"
 
-- name: Insert TreeSiter block in plugins/packer.lua
-  ansible.builtin.blockinfile:
-    path: "{{ plugins_dir }}/packer.lua"
-    marker: "  -- {mark} ANSIBLE MANAGED BLOCK: TREESITTER"
-    insertbefore: "--> regular plugins end"
-    block: |2
-        use {
-              'nvim-treesitter/nvim-treesitter',
-              run = ':TSUpdate'
-        }
-        use 'nvim-treesitter/nvim-treesitter-refactor'
-  notify: PackerSync
-
-- name: Copy TreeSitter configuration files.
-  ansible.builtin.copy:
-    src: files/lua/plugins/treesitter.lua
+- name: Install TreeSitter configuration templates.
+  ansible.builtin.template:
+    src: templates/lua/plugins/{{ item }}.lua.j2
     dest: "{{ plugins_dir }}/{{ item }}.lua"
     mode: "0644"
-    force: false
-  loop:
-    - treesitter
-    - treesitter-refactor
+    force: true
+  loop: "{{ treesitter_config_modules }}"
   notify: PackerSync
-
-- name: Require TreeSitter plugins in init.lua
-  ansible.builtin.lineinfile:
-    path: "{{ nvim_dir }}/init.lua"
-    search_string: "require('plugins.{{ item }}')"
-    line: "require('plugins.{{ item }}')"
-  loop:
-    - treesitter
-    - treesitter-refactor

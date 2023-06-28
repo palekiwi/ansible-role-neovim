@@ -13,5 +13,17 @@ lsp_servers:
   - tailwindcss
   - tsserver
 
-treesitter_packages:
+treesitter_system_packages:
   - base-devel
+
+treesitter_parsers:
+  - "astro"
+  - "c"
+  - "cpp"
+  - "rust"
+  - "vimdoc"
+  - "ini"
+  - "json"
+  - "lua"
+  - "python"
+  - "yaml"

@@ -18,6 +18,14 @@
   -- lsp config end
 {% endif %}
 
+{% if use_treesitter %}
+  -- treesitter config start
+  {% for item in treesitter_config_modules %}
+    require('plugins.{{ item }}')
+  {% endfor %}
+  -- treesitter config end
+{% endif %}
+
 -- config start
   require('config.settings')
   require('config.mappings')

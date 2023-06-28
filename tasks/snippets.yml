@@ -1,16 +1,12 @@
 ---
-- name: Ensure snippets are installed.
-  when: install_snippets
-  block:
-    - name: Ensure snippets directory exists.
-      ansible.builtin.file:
-        path: "{{ snippets_dir }}"
-        state: directory
-        mode: "0755"
+- name: Ensure snippets directory exists.
+  ansible.builtin.file:
+    path: "{{ snippets_dir }}"
+    state: directory
+    mode: "0755"
 
-    - name: Clone snippet repos.
-      ansible.builtin.git:
-        repo: "{{ item }}"
-        dest: "{{ snippets_dir }}"
-        version: "main"
-      loop: "{{ snippets_repos }}"
+- name: Clone snippets repos.
+  ansible.builtin.git:
+    repo: "{{ snippets_repos }}"
+    dest: "{{ snippets_dir }}"
+    version: "{{ snippets_version }}"

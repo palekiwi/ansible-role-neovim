@@ -1,7 +1,7 @@
 ---
 lsp_system_packages: []
 
-packer_lsp_plugins:
+lsp_packer_plugins:
   - use 'jose-elias-alvarez/null-ls.nvim'
   - use 'neovim/nvim-lspconfig'
   - use 'MunifTanjim/prettier.nvim'
@@ -11,9 +11,9 @@ packer_lsp_plugins:
   - use 'L3MON4D3/LuaSnip'
   - use 'onsails/lspkind.nvim'
 
-lsp_servers: []
-
 lsp_config_modules:
   - lsp
   - cmp
   - prettier
+
+lsp_servers: []

@@ -11,10 +11,18 @@ return require('packer').startup(function(use)
 
   {% if use_lsp %}
     --> LSP plugins start
-    {% for item in packer_lsp_plugins %}
+    {% for item in lsp_packer_plugins %}
       {{ item }}
     {% endfor %}
     --> LSP plugins end
+  {% endif %}
+
+  {% if use_treesitter %}
+    --> TreeSitter plugins start
+    {% for item in treesitter_packer_plugins %}
+      {{ item }}
+    {% endfor %}
+    --> TreeSitter plugins end
   {% endif %}
 
   -- Automatically set up your configuration after cloning packer.nvim

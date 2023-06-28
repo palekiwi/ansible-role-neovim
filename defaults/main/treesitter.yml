@@ -1,0 +1,21 @@
+---
+treesitter_system_packages: []
+
+treesitter_packer_plugins:
+  - "use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }"
+  - "use 'nvim-treesitter/nvim-treesitter-refactor'"
+
+treesitter_config_modules:
+  - treesitter
+
+treesitter_auto_install: "true"
+treesitter_sync_install: "false"
+
+treesitter_parsers:
+  - "c"
+  - "rust"
+  - "vimdoc"
+  - "ini"
+  - "json"
+  - "lua"
+  - "yaml"

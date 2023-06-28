@@ -1,0 +1,18 @@
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    {% for item in treesitter_parsers %}
+      "{{ item }}",
+    {% endfor %}
+  },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = {{ treesitter_sync_install }},
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = {{ treesitter_auto_install }},
+
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}

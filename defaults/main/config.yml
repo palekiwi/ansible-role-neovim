@@ -10,5 +10,5 @@ use_lsp: true
 use_treesitter: true
 
 install_snippets: false
-snippets_repos:
-  - git@github.com:dhammafarer/snippets.git
+snippets_repo: git@github.com:dhammafarer/snippets.git
+snippets_version: main
