@@ -1,12 +1,12 @@
 ---
 treesitter_system_packages: []
 
-treesitter_packer_plugins:
-  - "use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }"
-  - "use 'nvim-treesitter/nvim-treesitter-refactor'"
+treesitter_plugins:
+  - repo: nvim-treesitter/nvim-treesitter
+    run: ":TSUpdate"
+    name: treesitter
 
-treesitter_config_modules:
-  - treesitter
+  - repo: nvim-treesitter/nvim-treesitter-refactor
 
 treesitter_auto_install: "true"
 treesitter_sync_install: "false"

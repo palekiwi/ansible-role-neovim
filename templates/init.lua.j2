@@ -1,32 +1,15 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
 -- Ansible managed
 
 {% if plugin_manager == "packer" %}
-  require('plugins.packer')
-
-  -- packer plugins start
-  {% for item in packer_plugins %}
-    require('plugins.{{ item.name }}')
-  {% endfor %}
-  -- packer plugins end
+require('plugins.packer')
 {% endif %}
 
-{% if use_lsp %}
-  -- lsp config start
-  {% for item in lsp_config_modules %}
-    require('plugins.{{ item }}')
-  {% endfor %}
-  -- lsp config end
+{% for item in plugins + lsp_plugins + treesitter_plugins %}
+{% if (item.enabled is not defined or item.enabled == true) and item.name is defined %} 
+require('plugins.{{ item.name }}')
 {% endif %}
+{% endfor %}
 
-{% if use_treesitter %}
-  -- treesitter config start
-  {% for item in treesitter_config_modules %}
-    require('plugins.{{ item }}')
-  {% endfor %}
-  -- treesitter config end
-{% endif %}
-
--- config start
-  require('config.settings')
-  require('config.mappings')
--- config end
+require('config.settings')
+require('config.mappings')

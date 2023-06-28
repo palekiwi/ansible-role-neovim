@@ -1,12 +1,12 @@
 ---
 treesitter_parsers:
-  - "c"
-  - "rust"
-  - "vimdoc"
-  - "ini"
-  - "json"
-  - "lua"
-  - "yaml"
+  - { name: 'vimdoc', use: true }
+  - { name: 'ini', use: true }
+  - { name: 'json', use: true }
+  - { name: 'lua', use: true }
+  - { name: 'yaml', use: true }
+  - { name: 'c', use: "{{ modules['c'] }}" }
+  - { name: 'rust', use: "{{ modules['rust'] }}" }
 
 lsp_servers:
   - ansiblels

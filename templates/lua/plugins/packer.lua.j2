@@ -1,29 +1,34 @@
--- Ansible managed
+#jinja2: trim_blocks: True, lstrip_blocks: True
+-- ### ANSIBLE MANAGED ###
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  --> regular plugins start
-  {% for item in packer_plugins %}
-    {{ item.use }}
-  {% endfor %}
-  --> regular plugins end
-
-  {% if use_lsp %}
-    --> LSP plugins start
-    {% for item in lsp_packer_plugins %}
-      {{ item }}
-    {% endfor %}
-    --> LSP plugins end
+  --> plugins start
+{% for item in plugins + lsp_plugins + treesitter_plugins %}
+  {% if item.enabled is not defined or item.enabled == true %} 
+  use {
+    "{{ item.repo }}",
+  {% if item.tag is defined %}
+    tag = "{{ item.tag }}",
   {% endif %}
-
-  {% if use_treesitter %}
-    --> TreeSitter plugins start
-    {% for item in treesitter_packer_plugins %}
-      {{ item }}
-    {% endfor %}
-    --> TreeSitter plugins end
+  {% if item.branch is defined %}
+    branch = "{{ item.branch }}",
   {% endif %}
+  {% if item.run is defined %}
+    run = "{{ item.run }}",
+  {% endif %}
+  {% if item.requires is defined %}
+    requires = {
+    {% for req in item.requires %}
+      "{{ req }}",
+    {% endfor %}
+    },
+  {% endif %}
+  }
+  {% endif %}
+{% endfor %}
+  --> plugins end
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

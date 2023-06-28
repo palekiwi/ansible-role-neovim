@@ -1,0 +1,47 @@
+---
+plugins:
+  - name: nightfox
+    repo: EdenEast/nightfox.nvim
+
+  - name: web-devicons
+    repo: nvim-tree/nvim-web-devicons
+
+  - name: nvim-tree
+    repo: nvim-tree/nvim-tree.lua
+
+  - name: notify
+    repo: rcarriga/nvim-notify
+
+  - name: barbar
+    repo: romgrk/barbar.nvim
+
+  - name: hop
+    repo: phaazon/hop.nvim
+    branch: v2
+
+  - name: lualine
+    repo: nvim-lualine/lualine.nvim
+
+  - name: visual-multi
+    repo: mg979/vim-visual-multi
+
+  - name: autopairs
+    repo: windwp/nvim-autopairs
+
+  - name: surround
+    repo: kylechui/nvim-surround
+    tag: "*"
+
+  - name: telescope
+    repo: nvim-telescope/telescope.nvim
+    tag: 0.1.1
+    requires:
+      - nvim-lua/plenary.nvim
+
+  - name: chatgpt
+    repo: jackMort/ChatGPT.nvim
+    enabled: "{{ use_chatgpt }}"
+    requires:
+      - MunifTanjim/nui.nvim
+      - nvim-lua/plenary.nvim
+      - nvim-telescope/telescope.nvim

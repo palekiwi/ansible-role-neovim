@@ -9,6 +9,8 @@ plugin_manager: packer
 use_lsp: true
 use_treesitter: true
 
+use_chatgpt: false
+
 install_snippets: false
 snippets_repo: git@github.com:dhammafarer/snippets.git
 snippets_version: main

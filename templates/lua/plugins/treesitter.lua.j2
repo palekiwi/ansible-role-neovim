@@ -1,7 +1,9 @@
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
     {% for item in treesitter_parsers %}
-      "{{ item }}",
+      {% if item.use %}
+        "{{ item.name }}",
+      {% endif %}
     {% endfor %}
   },
 

@@ -20,4 +20,5 @@
     dest: "{{ plugins_dir }}/{{ item.name }}.lua"
     mode: "0644"
   notify: PackerSync
-  loop: "{{ packer_plugins }}"
+  loop: "{{ plugins }}"
+  when: item.name is defined
