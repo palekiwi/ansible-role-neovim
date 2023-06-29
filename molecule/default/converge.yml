@@ -3,7 +3,7 @@
   hosts: all
 
   vars:
-    modules: ["c", "rust"]
+    modules: ["c", "rust", "devops", "python", "web", "lua"]
     use_lsp: true
     use_treesitter: true
 

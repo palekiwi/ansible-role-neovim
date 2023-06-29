@@ -1,16 +1,11 @@
 ---
+- name: Add treesitter plugins to plugins.
+  ansible.builtin.set_fact:
+    plugins: "{{ plugins + treesitter_plugins }}"
+
 - name: Ensure TreeSitter dependencies are installed.
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
   become: true
   loop: "{{ treesitter_system_packages }}"
-
-- name: Install TreeSitter configuration templates.
-  ansible.builtin.template:
-    src: "{{ item['config']['src'] }}"
-    dest: "{{ plugins_dir }}/{{ item['config']['name'] }}.lua"
-    mode: "0644"
-    force: true
-  loop: "{{ treesitter_plugins }}"
-  when: item.enabled and item.config is defined

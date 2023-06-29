@@ -2,3 +2,7 @@
 - name: Install requirements for rust.
   ansible.builtin.import_tasks: "rust.yml"
   when: "'rust' in modules"
+
+- name: Install requirements for lua.
+  ansible.builtin.import_tasks: "lua.yml"
+  when: "'lua' in modules"

@@ -1,16 +1,11 @@
 ---
+- name: Add lsp plugins to plugins.
+  ansible.builtin.set_fact:
+    plugins: "{{ plugins + lsp_plugins }}"
+
 - name: Ensure required packages are installed.
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
   become: true
   loop: "{{ lsp_system_packages }}"
-
-- name: Install lsp plugin templates.
-  ansible.builtin.template:
-    src: "{{ item['config']['src'] }}"
-    dest: "{{ plugins_dir }}/{{ item['config']['name'] }}.lua"
-    mode: "0644"
-    force: true
-  loop: "{{ lsp_plugins }}"
-  when: item.enabled and item.config is defined

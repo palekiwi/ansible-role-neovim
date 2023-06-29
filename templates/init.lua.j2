@@ -7,25 +7,9 @@ require('plugins.packer')
 
 {% for item in plugins %}
   {% if item.enabled and item.config is defined %} 
-require('plugins.{{ item.config["name"] }}')
+require('plugins.{{ item["config"]["name"] }}')
   {% endif %}
 {% endfor %}
-
-{% if use_lsp %}
-  {% for item in lsp_plugins %}
-    {% if item.enabled and item.config is defined %} 
-require('plugins.{{ item.config["name"] }}')
-    {% endif %}
-  {% endfor %}
-{% endif %}
-
-{% if use_treesitter %}
-  {% for item in treesitter_plugins %}
-    {% if item.enabled and item.config is defined %} 
-require('plugins.{{ item.config["name"] }}')
-    {% endif %}
-  {% endfor %}
-{% endif %}
 
 require('config.settings')
 require('config.mappings')

@@ -5,17 +5,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   --> plugins start
-{% set all_plugins = plugins %}
-
-{% if use_lsp %}
-{% set all_plugins = all_plugins + lsp_plugins %}
-{% endif %}
-
-{% if use_treesitter %}
-{% set all_plugins = all_plugins + treesitter_plugins %}
-{% endif %}
-
-{% for item in all_plugins %}
+{% for item in plugins %}
   {% if item.enabled %} 
   use {
     "{{ item.repo }}",

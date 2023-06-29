@@ -16,23 +16,23 @@
     - "{{ config_dir }}"
     - "{{ plugins_dir }}"
 
-- name: Install config files
-  ansible.builtin.import_tasks: "config.yml"
-
 - name: Install requirements for language modules.
   ansible.builtin.import_tasks: "modules/main.yml"
+
+- name: Set up LSP
+  ansible.builtin.import_tasks: "lsp.yml"
+  when: use_lsp
+
+- name: Set up TreeSitter
+  ansible.builtin.import_tasks: "treesitter.yml"
+  when: use_treesitter
+
+- name: Install config files
+  ansible.builtin.import_tasks: "config.yml"
 
 - name: Install plugins with packer.
   ansible.builtin.import_tasks: "packer.yml"
   when: plugin_manager == "packer"
-
-- name: Install LSP
-  ansible.builtin.import_tasks: "lsp.yml"
-  when: use_lsp
-
-- name: Install TreeSitter
-  ansible.builtin.import_tasks: "treesitter.yml"
-  when: use_treesitter
 
 - name: Clone snippets.
   ansible.builtin.import_tasks: "snippets.yml"

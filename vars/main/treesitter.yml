@@ -15,9 +15,21 @@ treesitter_plugins:
 
 treesitter_parsers:
   - { name: vimdoc, enabled: true }
+  - { name: bash, enabled: true }
   - { name: ini, enabled: true }
   - { name: json, enabled: true }
-  - { name: lua, enabled: true }
   - { name: yaml, enabled: true }
+  - { name: git_config, enabled: true }
+  - { name: gitignore, enabled: true }
   - { name: c, enabled: "{{ 'c' in modules or 'cpp' in modules }}" }
+  - { name: cmake, enabled: "{{ 'c' in modules or 'cpp' in modules }}" }
   - { name: rust, enabled: "{{ 'rust' in modules }}" }
+  - { name: toml, enabled: "{{ 'rust' in modules }}" }
+  - { name: lua, enabled: "{{ 'lua' in modules }}" }
+  - { name: python, enabled: "{{ 'python' in modules }}" }
+  - { name: javascript, enabled: "{{ 'web' in modules }}" }
+  - { name: typescript, enabled: "{{ 'web' in modules }}" }
+  - { name: html, enabled: "{{ 'web' in modules }}" }
+  - { name: css, enabled: "{{ 'web' in modules }}" }
+  - { name: astro, enabled: "{{ 'web' in modules }}" }
+  - { name: dockerfile, enabled: "{{ 'devops' in modules }}" }
