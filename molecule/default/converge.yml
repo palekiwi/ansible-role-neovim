@@ -4,6 +4,8 @@
 
   vars:
     modules: ["c", "rust"]
+    use_lsp: true
+    use_treesitter: true
 
   tasks:
     - name: "Include palekiwi.neovim"

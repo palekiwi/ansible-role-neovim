@@ -1,0 +1,4 @@
+---
+- name: Install requirements for rust.
+  ansible.builtin.import_tasks: "rust.yml"
+  when: "'rust' in modules"

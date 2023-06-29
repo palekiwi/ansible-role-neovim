@@ -1,11 +1,10 @@
 ---
 - name: Ensure that essential packages are installed.
   ansible.builtin.package:
-    name:
-      - git
-      - neovim
+    name: "{{ item }}"
     state: present
   become: true
+  loop: "{{ system_packages }}"
 
 - name: Ensure required directories exists.
   ansible.builtin.file:
@@ -19,6 +18,9 @@
 
 - name: Install config files
   ansible.builtin.import_tasks: "config.yml"
+
+- name: Install requirements for language modules.
+  ansible.builtin.import_tasks: "modules/main.yml"
 
 - name: Install plugins with packer.
   ansible.builtin.import_tasks: "packer.yml"

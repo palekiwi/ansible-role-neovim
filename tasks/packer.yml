@@ -14,11 +14,11 @@
     force: true
   notify: PackerSync
 
-- name: Copy packer plugin configuration files.
-  ansible.builtin.copy:
-    src: "files/lua/plugins/{{ item.name }}.lua"
-    dest: "{{ plugins_dir }}/{{ item.name }}.lua"
+- name: Copy plugin configuration files.
+  ansible.builtin.template:
+    src: "{{ item['config']['src'] }}"
+    dest: "{{ plugins_dir }}/{{ item.config['name'] }}.lua"
     mode: "0644"
   notify: PackerSync
   loop: "{{ plugins }}"
-  when: item.name is defined
+  when: item.enabled and item.config is defined

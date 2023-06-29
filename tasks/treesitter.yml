@@ -8,9 +8,9 @@
 
 - name: Install TreeSitter configuration templates.
   ansible.builtin.template:
-    src: templates/lua/plugins/{{ item.name }}.lua.j2
-    dest: "{{ plugins_dir }}/{{ item.name }}.lua"
+    src: "{{ item['config']['src'] }}"
+    dest: "{{ plugins_dir }}/{{ item['config']['name'] }}.lua"
     mode: "0644"
     force: true
   loop: "{{ treesitter_plugins }}"
-  when: item.name is defined
+  when: item.enabled and item.config is defined

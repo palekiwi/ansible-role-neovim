@@ -4,10 +4,14 @@ treesitter_system_packages:
 
 treesitter_plugins:
   - repo: nvim-treesitter/nvim-treesitter
+    enabled: true
     run: ":TSUpdate"
-    name: treesitter
+    config:
+      src: templates/lua/plugins/treesitter.lua.j2
+      name: treesitter
 
   - repo: nvim-treesitter/nvim-treesitter-refactor
+    enabled: true
 
 treesitter_parsers:
   - { name: vimdoc, enabled: true }

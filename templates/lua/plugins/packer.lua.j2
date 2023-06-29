@@ -5,26 +5,36 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   --> plugins start
-{% for item in plugins + lsp_plugins + treesitter_plugins %}
-  {% if item.enabled is not defined or item.enabled == true %} 
+{% set all_plugins = plugins %}
+
+{% if use_lsp %}
+{% set all_plugins = all_plugins + lsp_plugins %}
+{% endif %}
+
+{% if use_treesitter %}
+{% set all_plugins = all_plugins + treesitter_plugins %}
+{% endif %}
+
+{% for item in all_plugins %}
+  {% if item.enabled %} 
   use {
     "{{ item.repo }}",
-  {% if item.tag is defined %}
+    {% if item.tag is defined %}
     tag = "{{ item.tag }}",
-  {% endif %}
-  {% if item.branch is defined %}
+    {% endif %}
+    {% if item.branch is defined %}
     branch = "{{ item.branch }}",
-  {% endif %}
-  {% if item.run is defined %}
+    {% endif %}
+    {% if item.run is defined %}
     run = "{{ item.run }}",
-  {% endif %}
-  {% if item.requires is defined %}
+    {% endif %}
+    {% if item.requires is defined %}
     requires = {
-    {% for req in item.requires %}
+      {% for req in item.requires %}
       "{{ req }}",
-    {% endfor %}
+      {% endfor %}
     },
-  {% endif %}
+    {% endif %}
   }
   {% endif %}
 {% endfor %}

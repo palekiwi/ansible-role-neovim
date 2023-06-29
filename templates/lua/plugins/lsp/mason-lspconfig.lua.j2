@@ -1,9 +1,12 @@
--- Ansible managed
+#jinja2: trim_blocks: True, lstrip_blocks: True
+-- ### ANSIBLE MANAGED ###
 
 require("mason-lspconfig").setup {
     ensure_installed = {
       {% for item in lsp_servers %}
-        "{{ item }}",
+        {% if item.enabled %}
+        "{{ item.name }}",
+        {% endif %}
       {% endfor %}
     },
     automatic_installation = {{ lsp_automatic_installation }},

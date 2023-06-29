@@ -7,37 +7,59 @@ lsp_system_packages:
 
 lsp_plugins:
   - repo: jose-elias-alvarez/null-ls.nvim
+    enabled: true
 
   - repo: williamboman/mason.nvim
     run: ":MasonUpdate"
-    name: mason
+    enabled: true
+    config:
+      src: templates/lua/plugins/lsp/mason.lua.j2
+      name: "mason"
 
   - repo: williamboman/mason-lspconfig.nvim
-    name: mason-lspconfig
+    enabled: true
+    config:
+      src: templates/lua/plugins/lsp/mason-lspconfig.lua.j2
+      name: "mason-lspconfig"
 
   - repo: neovim/nvim-lspconfig
-    name: lsp
+    enabled: true
+    config:
+      src: templates/lua/plugins/lsp/lsp.lua.j2
+      name: "lsp"
 
   - repo: MunifTanjim/prettier.nvim
-    name: prettier
+    enabled: true
+    config:
+      src: templates/lua/plugins/lsp/prettier.lua.j2
+      name: "prettier"
 
   - repo: hrsh7th/nvim-cmp
-    name: cmp
+    enabled: true
+    config:
+      src: templates/lua/plugins/lsp/cmp.lua.j2
+      name: "cmp"
 
   - repo: hrsh7th/cmp-nvim-lsp
+    enabled: true
 
   - repo: saadparwaiz1/cmp_luasnip
+    enabled: true
 
   - repo: L3MON4D3/LuaSnip
-    name: luasnip
+    enabled: true
+    config:
+      src: templates/lua/plugins/lsp/luasnip.lua.j2
+      name: "luasnip"
 
   - repo: onsails/lspkind.nvim
+    enabled: true
 
 lsp_servers:
   - { name: ansiblels, enabled: "{{ 'ansible' in modules }}" }
-  - { name: astro, enabled: "{{ 'web' in modules }}" }
   - { name: clangd, enabled: "{{ 'c' in modules or 'cpp' in modules }}" }
   - { name: pyright, enabled: "{{ 'python' in modules }}" }
   - { name: rust_analyzer, enabled: "{{ 'rust' in modules }}" }
+  - { name: astro, enabled: "{{ 'web' in modules }}" }
   - { name: tailwindcss, enabled: "{{ 'web' in modules }}" }
   - { name: tsserver, enabled: "{{ 'web' in modules }}" }

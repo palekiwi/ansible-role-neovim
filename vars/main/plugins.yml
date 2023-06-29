@@ -1,47 +1,88 @@
 ---
 plugins:
-  - name: nightfox
-    repo: EdenEast/nightfox.nvim
+  - repo: EdenEast/nightfox.nvim
+    enabled: true
+    config:
+      src: files/lua/plugins/nightfox.lua
+      name: nightfox
 
-  - name: web-devicons
-    repo: nvim-tree/nvim-web-devicons
+  - repo: nvim-tree/nvim-web-devicons
+    enabled: true
+    config:
+      src: files/lua/plugins/nvim-web-devicons.lua
+      name: web-devicons
 
-  - name: nvim-tree
-    repo: nvim-tree/nvim-tree.lua
+  - repo: nvim-tree/nvim-tree.lua
+    enabled: true
+    config:
+      src: files/lua/plugins/nvim-tree.lua
+      name: tree
 
-  - name: notify
-    repo: rcarriga/nvim-notify
+  - repo: rcarriga/nvim-notify
+    enabled: true
+    config:
+      src: files/lua/plugins/nvim-notify.lua
+      name: notify
 
-  - name: barbar
-    repo: romgrk/barbar.nvim
+  - repo: romgrk/barbar.nvim
+    enabled: true
+    config:
+      src: files/lua/plugins/barbar.lua
+      name: barbar
 
-  - name: hop
-    repo: phaazon/hop.nvim
+  - repo: phaazon/hop.nvim
     branch: v2
+    enabled: true
+    config:
+      src: files/lua/plugins/hop.lua
+      name: hop
 
-  - name: lualine
-    repo: nvim-lualine/lualine.nvim
+  - repo: nvim-lualine/lualine.nvim
+    enabled: true
+    config:
+      src: files/lua/plugins/lualine.lua
+      name: lualine
 
-  - name: visual-multi
-    repo: mg979/vim-visual-multi
+  - repo: mg979/vim-visual-multi
+    enabled: true
+    config:
+      src: files/lua/plugins/visual-multi.lua
+      name: visual-multi
 
-  - name: autopairs
-    repo: windwp/nvim-autopairs
+  - repo: windwp/nvim-autopairs
+    enabled: true
+    config:
+      src: files/lua/plugins/nvim-autopairs.lua
+      name: autopairs
 
-  - name: surround
-    repo: kylechui/nvim-surround
+  - repo: kylechui/nvim-surround
     tag: "*"
+    enabled: true
+    config:
+      src: files/lua/plugins/nvim-surround.lua
+      name: surround
 
-  - name: telescope
-    repo: nvim-telescope/telescope.nvim
+  - repo: nvim-telescope/telescope.nvim
     tag: 0.1.1
     requires:
       - nvim-lua/plenary.nvim
+    enabled: true
+    config:
+      src: files/lua/plugins/telescope.lua
+      name: telescope
 
-  - name: chatgpt
-    repo: jackMort/ChatGPT.nvim
+  - repo: jackMort/ChatGPT.nvim
     enabled: "{{ use_chatgpt }}"
     requires:
       - MunifTanjim/nui.nvim
       - nvim-lua/plenary.nvim
       - nvim-telescope/telescope.nvim
+    config:
+      src: files/lua/plugins/chatgpt.lua
+      name: chatgpt
+
+  - repo: simrat39/rust-tools.nvim
+    enabled: "{{ 'rust' in modules }}"
+    config:
+      src: files/lua/plugins/rust-tools.lua
+      name: rust-tools
