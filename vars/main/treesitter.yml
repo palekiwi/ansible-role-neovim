@@ -1,0 +1,19 @@
+---
+treesitter_system_packages:
+  - base-devel
+
+treesitter_plugins:
+  - repo: nvim-treesitter/nvim-treesitter
+    run: ":TSUpdate"
+    name: treesitter
+
+  - repo: nvim-treesitter/nvim-treesitter-refactor
+
+treesitter_parsers:
+  - { name: vimdoc, enabled: true }
+  - { name: ini, enabled: true }
+  - { name: json, enabled: true }
+  - { name: lua, enabled: true }
+  - { name: yaml, enabled: true }
+  - { name: c, enabled: "{{ 'c' in modules or 'cpp' in modules }}" }
+  - { name: rust, enabled: "{{ 'rust' in modules }}" }

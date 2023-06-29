@@ -1,9 +1,0 @@
----
-- name: Converge
-  hosts: all
-  remote_user: user
-
-  tasks:
-    - name: "Include palekiwi.neovim"
-      ansible.builtin.include_role:
-        name: "palekiwi.neovim"

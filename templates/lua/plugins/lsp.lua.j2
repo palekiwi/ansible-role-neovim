@@ -48,9 +48,11 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
 
 {% for item in lsp_servers %}
-  lspconfig["{{ item }}"].setup {
+  {% if item.enabled %}
+  lspconfig["{{ item.name }}"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = lsp_flags,
   }
+  {% endif %}
 {% endfor %}

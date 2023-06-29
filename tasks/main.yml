@@ -1,7 +1,4 @@
 ---
-- name: Include OS-specific variables.
-  ansible.builtin.include_vars: "{{ ansible_facts['os_family'] }}.yml"
-
 - name: Ensure that essential packages are installed.
   ansible.builtin.package:
     name:

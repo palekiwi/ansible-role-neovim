@@ -2,6 +2,9 @@
 - name: Converge
   hosts: all
 
+  vars:
+    modules: ["c", "rust"]
+
   tasks:
     - name: "Include palekiwi.neovim"
       ansible.builtin.include_role:

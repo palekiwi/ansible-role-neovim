@@ -1,8 +1,7 @@
 ---
-modules:
-  c: false
-  cpp: false
-  rust: false
-  python: false
-  web: false
-  lua: true
+# What programming language modules to include:
+# eg. "c", rust", "python", etc
+# Modules include plugins, parsers, LSP servers.
+modules: []
+
+rustup_version: stable
