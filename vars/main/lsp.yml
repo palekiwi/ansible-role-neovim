@@ -55,6 +55,12 @@ lsp_plugins:
   - repo: onsails/lspkind.nvim
     enabled: true
 
+  - repo: simrat39/rust-tools.nvim
+    enabled: "{{ 'rust' in modules }}"
+    config:
+      src: files/lua/plugins/rust-tools.lua
+      name: rust-tools
+
 lsp_servers:
   - { name: ansiblels, enabled: "{{ 'devops' in modules }}" }
   - { name: clangd, enabled: "{{ 'c' in modules or 'cpp' in modules }}" }

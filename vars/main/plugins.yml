@@ -80,9 +80,3 @@ plugins:
     config:
       src: files/lua/plugins/chatgpt.lua
       name: chatgpt
-
-  - repo: simrat39/rust-tools.nvim
-    enabled: "{{ 'rust' in modules }}"
-    config:
-      src: files/lua/plugins/rust-tools.lua
-      name: rust-tools

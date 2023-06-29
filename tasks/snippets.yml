@@ -7,6 +7,6 @@
 
 - name: Clone snippets repos.
   ansible.builtin.git:
-    repo: "{{ snippets_repos }}"
+    repo: "{{ snippets_repo }}"
     dest: "{{ snippets_dir }}"
     version: "{{ snippets_version }}"
