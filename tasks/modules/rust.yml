@@ -5,6 +5,12 @@
     name: rustup
     state: present
 
+- name: Ensure lldb is installed.
+  become: true
+  community.general.pacman:
+    name: lldb
+    state: present
+
 - name: Check currently installed default toolchain.
   ansible.builtin.command:
     cmd: rustup default

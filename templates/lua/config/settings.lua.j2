@@ -38,6 +38,12 @@ vim.filetype.add({
   },
 })
 
+vim.filetype.add({
+  pattern = {
+    ['.*.lua.j2'] = 'lua.j2',
+  },
+})
+
 -- python indent
 vim.g["python_indent"] = {
   disable_parentheses_indenting = 'v:false',

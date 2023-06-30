@@ -71,6 +71,8 @@ lsp_plugins:
     enabled: "{{ 'rust' in modules or 'c' in modules }}"
     requires:
       - mfussenegger/nvim-dap
+    config:
+      name: nvim-dap-ui
 
 lsp_servers:
   - { name: ansiblels, enabled: "{{ 'devops' in modules }}" }
@@ -83,6 +85,5 @@ lsp_servers:
   - { name: tsserver, enabled: "{{ 'web' in modules }}" }
 
 lsp_dap_adapters:
-  - { name: codelldb, enabled: "{{ 'rust' in modules or 'c' in modules or 'cpp' in modules }}" }
   - { name: python, enabled: "{{ 'python' in modules }}" }
   - { name: js, enabled: "{{ 'web' in modules }}" }
