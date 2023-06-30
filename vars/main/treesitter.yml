@@ -7,8 +7,7 @@ treesitter_plugins:
     enabled: true
     run: ":TSUpdate"
     config:
-      src: templates/lua/plugins/treesitter.lua.j2
-      name: treesitter
+      name: nvim-treesitter
 
   - repo: nvim-treesitter/nvim-treesitter-refactor
     enabled: true

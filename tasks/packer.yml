@@ -16,7 +16,7 @@
 
 - name: Copy plugin configuration files.
   ansible.builtin.template:
-    src: "{{ item['config']['src'] }}"
+    src: "templates/lua/plugins/{{ item['config']['name'] }}.lua.j2"
     dest: "{{ plugins_dir }}/{{ item.config['name'] }}.lua"
     mode: "0644"
   notify: PackerSync

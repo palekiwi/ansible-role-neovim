@@ -1,0 +1,10 @@
+require("mason-nvim-dap").setup({
+    ensure_installed = {
+      {% for item in lsp_dap_adapters %}
+        {% if item.enabled %}
+        "{{ item.name }}",
+        {% endif %}
+      {% endfor %}
+    },
+    automatic_installation = {{ lsp_automatic_installation }},
+})

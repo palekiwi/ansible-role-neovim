@@ -13,32 +13,37 @@ lsp_plugins:
     run: ":MasonUpdate"
     enabled: true
     config:
-      src: templates/lua/plugins/mason.lua.j2
       name: "mason"
 
   - repo: williamboman/mason-lspconfig.nvim
     enabled: true
     config:
-      src: templates/lua/plugins/mason-lspconfig.lua.j2
       name: "mason-lspconfig"
+
+  - repo: jay-babu/mason-nvim-dap.nvim
+    enabled: true
+    config:
+      name: "mason-nvim-dap"
+
+  - repo: folke/neodev.nvim
+    enabled: true
+    config:
+      name: neodev
 
   - repo: neovim/nvim-lspconfig
     enabled: true
     config:
-      src: templates/lua/plugins/lsp.lua.j2
-      name: "lsp"
+      name: "nvim-lspconfig"
 
   - repo: MunifTanjim/prettier.nvim
     enabled: true
     config:
-      src: templates/lua/plugins/prettier.lua.j2
       name: "prettier"
 
   - repo: hrsh7th/nvim-cmp
     enabled: true
     config:
-      src: templates/lua/plugins/cmp.lua.j2
-      name: "cmp"
+      name: "nvim-cmp"
 
   - repo: hrsh7th/cmp-nvim-lsp
     enabled: true
@@ -49,7 +54,6 @@ lsp_plugins:
   - repo: L3MON4D3/LuaSnip
     enabled: true
     config:
-      src: templates/lua/plugins/luasnip.lua.j2
       name: "luasnip"
 
   - repo: onsails/lspkind.nvim
@@ -58,8 +62,15 @@ lsp_plugins:
   - repo: simrat39/rust-tools.nvim
     enabled: "{{ 'rust' in modules }}"
     config:
-      src: files/lua/plugins/rust-tools.lua
       name: rust-tools
+
+  - repo: mfussenegger/nvim-dap
+    enabled: "{{ 'rust' in modules or 'c' in modules }}"
+
+  - repo: rcarriga/nvim-dap-ui
+    enabled: "{{ 'rust' in modules or 'c' in modules }}"
+    requires:
+      - mfussenegger/nvim-dap
 
 lsp_servers:
   - { name: ansiblels, enabled: "{{ 'devops' in modules }}" }
@@ -70,3 +81,8 @@ lsp_servers:
   - { name: astro, enabled: "{{ 'web' in modules }}" }
   - { name: tailwindcss, enabled: "{{ 'web' in modules }}" }
   - { name: tsserver, enabled: "{{ 'web' in modules }}" }
+
+lsp_dap_adapters:
+  - { name: codelldb, enabled: "{{ 'rust' in modules or 'c' in modules or 'cpp' in modules }}" }
+  - { name: python, enabled: "{{ 'python' in modules }}" }
+  - { name: js, enabled: "{{ 'web' in modules }}" }

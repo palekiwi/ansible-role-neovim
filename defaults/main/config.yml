@@ -4,12 +4,15 @@ plugins_dir: ~/.config/nvim/lua/plugins
 config_dir: ~/.config/nvim/lua/config
 snippets_dir: ~/.config/nvim/snippets
 
+colorscheme: nightfox
+
 plugin_manager: packer
 
 use_lsp: true
 use_treesitter: true
 
 use_chatgpt: false
+chatgpt_api_key_cmd: "pass api/openai/nvim"
 
 install_snippets: false
 snippets_repo: git@github.com:dhammafarer/snippets.git
