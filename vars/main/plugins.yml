@@ -60,6 +60,9 @@ plugins:
     config:
       name: telescope
 
+  - repo: voldikss/vim-floaterm
+    enabled: true
+
   - repo: jackMort/ChatGPT.nvim
     enabled: "{{ use_chatgpt }}"
     requires:
