@@ -1,3 +1,7 @@
+{% if plugin_manager == "lazy" %}
+vim.opt.runtimepath:append("$HOME/.local/share/nvim/lazy/nvim-treesitter")
+{% endif %}
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
     {% for item in treesitter_parsers %}
@@ -12,6 +16,10 @@ require'nvim-treesitter.configs'.setup {
 
   -- Automatically install missing parsers when entering buffer
   auto_install = {{ treesitter_auto_install }},
+
+{% if plugin_manager == "lazy" %}
+  parser_install_dir ="$HOME/.local/share/nvim/lazy/nvim-treesitter",
+{% endif %}
 
   highlight = {
     enable = true,
