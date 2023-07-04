@@ -6,21 +6,22 @@
     modules: ["c", "rust", "devops", "python", "web", "lua"]
     use_lsp: true
     use_treesitter: true
+    plugin_manager: lazy
 
   tasks:
     - name: "Include palekiwi.neovim"
       ansible.builtin.include_role:
         name: "palekiwi.neovim"
 
-    - name: Cat contents of config-packer.lua
+    - name: Cat contents of plugin config.
       ansible.builtin.command:
-        cmd: "cat ~/.config/nvim/lua/plugins/packer.lua"
+        cmd: "cat ~/.config/nvim/lua/plugins/{{ plugin_manager }}.lua"
       changed_when: false
-      register: configpacker
+      register: pluginconfig
 
-    - name: Cat contents of config-packer.lua
+    - name: Cat contents of plugin config.
       ansible.builtin.debug:
-        var: configpacker.stdout_lines
+        var: pluginconfig.stdout_lines
 
     - name: Cat contents of init.lua
       ansible.builtin.command:

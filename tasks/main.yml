@@ -30,9 +30,8 @@
 - name: Install config files
   ansible.builtin.import_tasks: "config.yml"
 
-- name: Install plugins with packer.
-  ansible.builtin.import_tasks: "packer.yml"
-  when: plugin_manager == "packer"
+- name: Install plugins.
+  ansible.builtin.import_tasks: "plugins.yml"
 
 - name: Clone snippets.
   ansible.builtin.import_tasks: "snippets.yml"

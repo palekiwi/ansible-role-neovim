@@ -6,7 +6,7 @@ snippets_dir: ~/.config/nvim/snippets
 
 colorscheme: nightfox
 
-plugin_manager: packer
+plugin_manager: lazy
 
 use_lsp: true
 use_treesitter: true

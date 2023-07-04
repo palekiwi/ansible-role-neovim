@@ -5,7 +5,7 @@ treesitter_system_packages:
 treesitter_plugins:
   - repo: nvim-treesitter/nvim-treesitter
     enabled: true
-    run: ":TSUpdate"
+    build: ":TSUpdate"
     config:
       name: nvim-treesitter
 

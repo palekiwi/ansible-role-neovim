@@ -10,7 +10,7 @@ lsp_plugins:
     enabled: true
 
   - repo: williamboman/mason.nvim
-    run: ":MasonUpdate"
+    build: ":MasonUpdate"
     enabled: true
     config:
       name: "mason"
@@ -69,7 +69,7 @@ lsp_plugins:
 
   - repo: rcarriga/nvim-dap-ui
     enabled: "{{ 'rust' in modules or 'c' in modules }}"
-    requires:
+    dependencies:
       - mfussenegger/nvim-dap
     config:
       name: nvim-dap-ui
