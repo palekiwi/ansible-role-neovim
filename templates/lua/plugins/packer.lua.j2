@@ -1,12 +1,12 @@
 #jinja2: trim_blocks: True, lstrip_blocks: True
--- ### ANSIBLE MANAGED ###
+-- {{ ansible_managed }}
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   --> plugins start
 {% for item in plugins %}
-  {% if item.enabled %} 
+  {% if item.enabled %}
   use {
     "{{ item.repo }}",
     {% if item.tag is defined %}
@@ -29,10 +29,4 @@ return require('packer').startup(function(use)
   {% endif %}
 {% endfor %}
   --> plugins end
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
 end)
