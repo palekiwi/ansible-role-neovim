@@ -6,7 +6,7 @@ require('plugins.packer')
 {% endif %}
 
 {% for item in plugins %}
-  {% if item.enabled and item.config is defined %} 
+  {% if item.enabled and item.config is defined %}
 require('plugins.{{ item["config"]["name"] }}')
   {% endif %}
 {% endfor %}
