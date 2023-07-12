@@ -1,3 +1,4 @@
+-- {{ ansible_managed }}
 require("mason-nvim-dap").setup({
     ensure_installed = {
       {% for item in lsp_dap_adapters %}

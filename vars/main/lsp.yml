@@ -87,3 +87,17 @@ lsp_servers:
 lsp_dap_adapters:
   - { name: python, enabled: "{{ 'python' in modules }}" }
   - { name: js, enabled: "{{ 'web' in modules }}" }
+
+lsp_prettier:
+  - { name: "css", enabled: true }
+  - { name: "astro", enabled: true }
+  - { name: "html", enabled: true }
+  - { name: "javascript", enabled: true }
+  - { name: "javascriptreact", enabled: true }
+  - { name: "json", enabled: true }
+  - { name: "less", enabled: true }
+  - { name: "markdown", enabled: true }
+  - { name: "scss", enabled: true }
+  - { name: "typescript", enabled: true }
+  - { name: "typescriptreact", enabled: true }
+  - { name: "yaml", enabled: true }

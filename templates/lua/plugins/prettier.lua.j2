@@ -1,3 +1,5 @@
+-- {{ ansible_managed }}
+
 local null_ls = require("null-ls")
 
 local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
@@ -37,18 +39,10 @@ local prettier = require("prettier")
 prettier.setup({
   bin = 'prettier', -- or `'prettierd'` (v0.22+)
   filetypes = {
-    "css",
-    "astro",
-    "graphql",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "json",
-    "less",
-    "markdown",
-    "scss",
-    "typescript",
-    "typescriptreact",
-    "yaml",
+    {% for item in lsp_prettier %}
+      {% if item.enabled %}
+      "{{ item.name }}",
+      {% endif %}
+    {% endfor %}
   },
 })
