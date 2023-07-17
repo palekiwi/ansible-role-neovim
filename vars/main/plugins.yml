@@ -71,3 +71,9 @@ plugins:
       - nvim-telescope/telescope.nvim
     config:
       name: chatgpt
+
+  - repo: folke/which-key.nvim
+    enabled: true
+    event: "VeryLazy"
+    config:
+      name: which-key

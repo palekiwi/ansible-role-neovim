@@ -14,6 +14,9 @@ require("lazy").setup({
       {% if item.build is defined %}
       build = "{{ item.build }}",
       {% endif %}
+      {% if item.event is defined %}
+      event = "{{ item.event }}",
+      {% endif %}
       {% if item.dependencies is defined %}
       dependencies = {
         {% for dep in item.dependencies %}
