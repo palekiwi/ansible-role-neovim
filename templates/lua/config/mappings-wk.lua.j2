@@ -1,0 +1,33 @@
+local wk = require("which-key")
+
+vim.g.mapleader = ","
+
+-- prefix: leader
+wk.register({
+  f = {
+    name = "+file",
+    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    n = { "<cmd>enew<cr>", "New File" },
+  },
+  n = { "<cmd>NvimTreeToggle<cr>", "NvimTree Toggle"},
+  w = { "<cmd>write<cr>", "Write"},
+  q = { "<cmd>quit<cr>", "Quit"},
+}, { prefix = "<leader>"})
+
+-- no prefix
+wk.register({
+  s = {"<cmd>HopChar1<cr>", "Hop Char 1"},
+  g = {
+    r = { vim.lsp.buf.references, "References" }
+  }
+})
+
+wk.register({
+  ["<A-,>"] = { "<cmd>BufferPrevious<cr>", "Previous Buffer" },
+  ["<A-.>"] = { "<cmd>BufferNext<cr>",     "Next Buffer" },
+  ["<A-c>"] = { "<cmd>BufferClose<cr>",    "Close Buffer"},
+  ["<A-p>"] = { "<cmd>BufferPin<cr>",      "Pin Buffer"},
+})
+
+wk.setup({})

@@ -75,5 +75,3 @@ plugins:
   - repo: folke/which-key.nvim
     enabled: true
     event: "VeryLazy"
-    config:
-      name: which-key
