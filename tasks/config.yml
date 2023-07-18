@@ -17,5 +17,5 @@
   ansible.builtin.template:
     src: "templates/lua/config/mappings-wk.lua.j2"
     dest: "{{ config_dir }}/mappings.lua"
+    force: "{{ overwrite_mappings }}"
     mode: "0644"
-    force: false

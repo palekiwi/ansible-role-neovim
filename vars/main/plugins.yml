@@ -7,8 +7,6 @@ plugins:
 
   - repo: nvim-tree/nvim-web-devicons
     enabled: true
-    config:
-      name: nvim-web-devicons
 
   - repo: nvim-tree/nvim-tree.lua
     enabled: true
@@ -38,8 +36,6 @@ plugins:
 
   - repo: mg979/vim-visual-multi
     enabled: true
-    config:
-      name: vim-visual-multi
 
   - repo: windwp/nvim-autopairs
     enabled: true
@@ -57,8 +53,6 @@ plugins:
     dependencies:
       - nvim-lua/plenary.nvim
     enabled: true
-    config:
-      name: telescope
 
   - repo: voldikss/vim-floaterm
     enabled: true
@@ -73,5 +67,5 @@ plugins:
       name: chatgpt
 
   - repo: folke/which-key.nvim
-    enabled: true
+    enabled: use_wk
     event: "VeryLazy"

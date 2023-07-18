@@ -10,9 +10,12 @@ plugin_manager: lazy
 
 use_lsp: true
 use_treesitter: true
+use_wk: true
+
+overwrite_mappings: false
 
 use_chatgpt: false
-chatgpt_api_key_cmd: "pass api/openai/nvim"
+chatgpt_api_key_cmd: ""
 
 install_snippets: false
 snippets_repo: git@github.com:dhammafarer/snippets.git
