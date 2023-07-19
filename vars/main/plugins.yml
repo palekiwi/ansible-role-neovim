@@ -69,3 +69,8 @@ plugins:
   - repo: folke/which-key.nvim
     enabled: use_wk
     event: "VeryLazy"
+
+  - repo: lukas-reineke/indent-blankline.nvim
+    enabled: true
+    config:
+      name: indent-blankline
