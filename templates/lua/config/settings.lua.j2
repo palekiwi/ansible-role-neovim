@@ -58,3 +58,9 @@ vim.g["python_indent"] = {
   open_paren = 'shiftwidth() * 1',
   nested_paren = 'shiftwidth()'
 }
+
+-- workaround needed to trigger folding on file opening
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    pattern = { "*" },
+    command = "normal zx",
+})
