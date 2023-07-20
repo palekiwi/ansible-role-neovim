@@ -14,6 +14,7 @@ use_wk: true
 
 overwrite_mappings: false
 
+use_codeium: false
 use_chatgpt: false
 chatgpt_api_key_cmd: ""
 
