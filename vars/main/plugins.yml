@@ -66,6 +66,11 @@ plugins:
     config:
       name: chatgpt
 
+  - repo: Exafunction/codeium.vim
+    enabled: "{{ use_codeium }}"
+    config:
+      name: codeium
+
   - repo: folke/which-key.nvim
     enabled: use_wk
     event: "VeryLazy"
