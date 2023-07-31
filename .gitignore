@@ -1,3 +1,4 @@
 .vagrant
 *.swp
 files/lua/config/mappings.lua
+tags
