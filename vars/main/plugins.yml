@@ -79,3 +79,6 @@ plugins:
     enabled: true
     config:
       name: indent-blankline
+
+  - repo: ludovicchabant/vim-gutentags
+    enabled: true
