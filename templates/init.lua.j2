@@ -27,5 +27,6 @@ require('plugins.{{ item["config"]["name"] }}')
   {% endif %}
 {% endfor %}
 
+require('config.settings-base')
 require('config.settings')
 require('config.mappings')

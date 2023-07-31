@@ -8,10 +8,13 @@
 
 - name: Install config/settings template.
   ansible.builtin.template:
-    src: "templates/lua/config/settings.lua.j2"
-    dest: "{{ config_dir }}/settings.lua"
+    src: "templates/lua/config/{{ item.name }}.lua.j2"
+    dest: "{{ config_dir }}/{{ item.name }}.lua"
     mode: "0644"
-    force: true
+    force: "{{ item.force }}"
+  loop:
+    - { name: "settings-base", force: true }
+    - { name: "settings", force: false }
 
 - name: Install config/mappings template
   ansible.builtin.template:
