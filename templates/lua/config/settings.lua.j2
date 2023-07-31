@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   command = "normal zx",
 })
 
-vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "FileReadPost" }, {
   pattern = { "*" },
   command = "normal zR",
 })
