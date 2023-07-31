@@ -40,6 +40,9 @@ lsp_plugins:
     config:
       name: "prettier"
 
+  - repo: hrsh7th/cmp-path
+    enabled: true
+
   - repo: hrsh7th/nvim-cmp
     enabled: true
     config:
