@@ -8,6 +8,8 @@ lsp_system_packages:
 lsp_plugins:
   - repo: jose-elias-alvarez/null-ls.nvim
     enabled: true
+    config:
+      name: "null-ls"
 
   - repo: williamboman/mason.nvim
     build: ":MasonUpdate"
