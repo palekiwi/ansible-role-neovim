@@ -1,6 +1,6 @@
 ---
 treesitter_system_packages:
-  - base-devel
+  - { name: base-devel, enabled: true }
 
 treesitter_plugins:
   - repo: nvim-treesitter/nvim-treesitter
@@ -33,3 +33,4 @@ treesitter_parsers:
   - { name: css, enabled: "{{ 'web' in modules }}" }
   - { name: astro, enabled: "{{ 'web' in modules }}" }
   - { name: dockerfile, enabled: "{{ 'devops' in modules }}" }
+  - { name: php, enabled: "{{ 'php' in modules }}" }

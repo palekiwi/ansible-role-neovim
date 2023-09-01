@@ -86,6 +86,7 @@ lsp_servers:
   - { name: astro, enabled: "{{ 'web' in modules }}" }
   - { name: tailwindcss, enabled: "{{ 'web' in modules }}" }
   - { name: tsserver, enabled: "{{ 'web' in modules }}" }
+  - { name: phpactor, enabled: "{{ 'php' in modules }}" }
 
 lsp_dap_adapters:
   - { name: python, enabled: "{{ 'python' in modules }}" }
@@ -104,3 +105,4 @@ lsp_prettier:
   - { name: "typescript", enabled: true }
   - { name: "typescriptreact", enabled: true }
   - { name: "yaml", enabled: true }
+  - { name: "php", enabled: true }

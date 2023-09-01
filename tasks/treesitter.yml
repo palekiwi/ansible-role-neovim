@@ -5,7 +5,8 @@
 
 - name: Ensure TreeSitter dependencies are installed.
   ansible.builtin.package:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     state: present
   become: true
   loop: "{{ treesitter_system_packages }}"
+  when: item.enabled

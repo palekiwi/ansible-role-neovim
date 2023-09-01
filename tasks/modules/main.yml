@@ -6,3 +6,7 @@
 - name: Install requirements for lua.
   ansible.builtin.import_tasks: "lua.yml"
   when: "'lua' in modules"
+
+- name: Install requirements for php.
+  ansible.builtin.import_tasks: "php.yml"
+  when: "'php' in modules"
