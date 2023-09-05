@@ -60,6 +60,7 @@ lsp_plugins:
     enabled: true
     config:
       name: "luasnip"
+    build: "make install_jsregexp"
 
   - repo: onsails/lspkind.nvim
     enabled: true
