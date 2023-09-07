@@ -90,6 +90,7 @@ lsp_servers:
   - { name: tailwindcss, enabled: "{{ 'web' in modules }}" }
   - { name: tsserver, enabled: "{{ 'web' in modules }}" }
   - { name: phpactor, enabled: "{{ 'php' in modules }}" }
+  - { name: volar, enabled: "{{ 'web' in modules }}" }
 
 lsp_dap_adapters:
   - { name: python, enabled: "{{ 'python' in modules }}" }
@@ -109,3 +110,4 @@ lsp_prettier:
   - { name: "typescriptreact", enabled: true }
   - { name: "yaml", enabled: true }
   - { name: "php", enabled: true }
+  - { name: "vue", enabled: true }
