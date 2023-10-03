@@ -33,5 +33,6 @@ treesitter_parsers:
   - { name: css, enabled: "{{ 'web' in modules }}" }
   - { name: astro, enabled: "{{ 'web' in modules }}" }
   - { name: dockerfile, enabled: "{{ 'devops' in modules }}" }
+  - { name: go, enabled: "{{ 'devops' in modules }}" }
   - { name: php, enabled: "{{ 'php' in modules }}" }
   - { name: vue, enabled: "{{ 'web' in modules }}" }

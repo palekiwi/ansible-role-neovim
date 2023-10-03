@@ -83,6 +83,7 @@ lsp_plugins:
 lsp_servers:
   - { name: ansiblels, enabled: "{{ 'devops' in modules }}" }
   - { name: clangd, enabled: "{{ 'c' in modules or 'cpp' in modules }}" }
+  - { name: gopls, enabled: "{{ 'devops' in modules }}" }
   - { name: pyright, enabled: "{{ 'python' in modules }}" }
   - { name: rust_analyzer, enabled: "{{ 'rust' in modules }}" }
   - { name: lua_ls, enabled: "{{ 'lua' in modules }}" }
