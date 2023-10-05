@@ -1,2 +1,2 @@
 ---
-lsp_automatic_installation: "true"
+neovim_lsp_automatic_installation: "true"

@@ -18,9 +18,9 @@
   changed_when: false
   failed_when: false
 
-- name: Ensure default toolchain is set to {{ rustup_version }}.
+- name: Ensure default toolchain is set to {{ neovim_rustup_version }}.
   ansible.builtin.command:
-    cmd: "rustup default {{ rustup_version }}"
+    cmd: "rustup default {{ neovim_rustup_version }}"
   register: default_toolchain
   changed_when: true
-  when: "rustup_version not in default_toolchain.stdout"
+  when: "neovim_rustup_version not in default_toolchain.stdout"

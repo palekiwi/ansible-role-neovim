@@ -1,5 +1,5 @@
 ---
-plugins:
+neovim_plugins:
   - repo: EdenEast/nightfox.nvim
     enabled: true
     config:
@@ -58,7 +58,7 @@ plugins:
     enabled: true
 
   - repo: jackMort/ChatGPT.nvim
-    enabled: "{{ use_chatgpt }}"
+    enabled: "{{ neovim_use_chatgpt }}"
     dependencies:
       - MunifTanjim/nui.nvim
       - nvim-lua/plenary.nvim
@@ -67,7 +67,7 @@ plugins:
       name: chatgpt
 
   - repo: Exafunction/codeium.vim
-    enabled: "{{ use_codeium }}"
+    enabled: "{{ neovim_use_codeium }}"
     config:
       name: codeium
 

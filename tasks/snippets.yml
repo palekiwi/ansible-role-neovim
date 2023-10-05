@@ -1,12 +1,12 @@
 ---
 - name: Ensure snippets directory exists.
   ansible.builtin.file:
-    path: "{{ snippets_dir }}"
+    path: "{{ neovim_snippets_dir }}"
     state: directory
     mode: "0755"
 
 - name: Clone snippets repos.
   ansible.builtin.git:
-    repo: "{{ snippets_repo }}"
-    dest: "{{ snippets_dir }}"
-    version: "{{ snippets_version }}"
+    repo: "{{ neovim_snippets_repo }}"
+    dest: "{{ neovim_snippets_dir }}"
+    version: "{{ neovim_snippets_version }}"

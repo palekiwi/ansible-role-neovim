@@ -1,23 +1,21 @@
 ---
-nvim_dir: ~/.config/nvim
-plugins_dir: ~/.config/nvim/lua/plugins
-config_dir: ~/.config/nvim/lua/config
-snippets_dir: ~/.config/nvim/snippets
+# directories
+neovim_base_dir: ~/.config/nvim
 
-colorscheme: nightfox
+neovim_colorscheme: nightfox
 
-plugin_manager: lazy
+neovim_plugin_manager: lazy
 
-use_lsp: true
-use_treesitter: true
-use_wk: true
+neovim_use_lsp: true
+neovim_use_treesitter: true
+neovim_use_wk: true
 
-overwrite_mappings: false
+neovim_overwrite_mappings: false
 
-use_codeium: false
-use_chatgpt: false
-chatgpt_api_key_cmd: ""
+neovim_use_codeium: false
+neovim_use_chatgpt: false
+neovim_chatgpt_api_key_cmd: ""
 
-install_snippets: false
-snippets_repo: git@github.com:dhammafarer/snippets.git
-snippets_version: main
+neovim_install_snippets: false
+neovim_snippets_repo: git@github.com:dhammafarer/snippets.git
+neovim_snippets_version: main

@@ -1,7 +1,7 @@
 #jinja2: trim_blocks: True, lstrip_blocks: True
 -- {{ ansible_managed }}
 
-{% if plugin_manager == "lazy" %}
+{% if neovim_plugin_manager == "lazy" %}
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -17,11 +17,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require('plugins.lazy')
 {% endif %}
-{% if plugin_manager == "packer" %}
+{% if neovim_plugin_manager == "packer" %}
 require('plugins.packer')
 {% endif %}
 
-{% for item in plugins %}
+{% for item in neovim_plugins %}
   {% if item.enabled and item.config is defined %}
 require('plugins.{{ item["config"]["name"] }}')
   {% endif %}

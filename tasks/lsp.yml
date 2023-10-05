@@ -1,11 +1,11 @@
 ---
 - name: Add lsp plugins to plugins.
   ansible.builtin.set_fact:
-    plugins: "{{ plugins + lsp_plugins }}"
+    neovim_plugins: "{{ neovim_plugins + neovim_lsp_plugins }}"
 
 - name: Ensure required packages are installed.
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
   become: true
-  loop: "{{ lsp_system_packages }}"
+  loop: "{{ neovim_lsp_system_packages }}"

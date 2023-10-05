@@ -2,6 +2,6 @@
 # What programming language modules to include:
 # eg. "c", rust", "python", etc
 # Modules include plugins, parsers, LSP servers.
-modules: []
+neovim_modules: []
 
-rustup_version: stable
+neovim_rustup_version: stable

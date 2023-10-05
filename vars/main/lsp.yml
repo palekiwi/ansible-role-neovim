@@ -1,11 +1,11 @@
-lsp_system_packages:
+neovim_lsp_system_packages:
   - npm
   - typescript
   - prettier
   - wget
   - unzip
 
-lsp_plugins:
+neovim_lsp_plugins:
   - repo: jose-elias-alvarez/null-ls.nvim
     enabled: true
     config:
@@ -66,38 +66,38 @@ lsp_plugins:
     enabled: true
 
   - repo: simrat39/rust-tools.nvim
-    enabled: "{{ 'rust' in modules }}"
+    enabled: "{{ 'rust' in neovim_modules }}"
     config:
       name: rust-tools
 
   - repo: mfussenegger/nvim-dap
-    enabled: "{{ 'rust' in modules or 'c' in modules }}"
+    enabled: "{{ 'rust' in neovim_modules or 'c' in neovim_modules }}"
 
   - repo: rcarriga/nvim-dap-ui
-    enabled: "{{ 'rust' in modules or 'c' in modules }}"
+    enabled: "{{ 'rust' in neovim_modules or 'c' in neovim_modules }}"
     dependencies:
       - mfussenegger/nvim-dap
     config:
       name: nvim-dap-ui
 
-lsp_servers:
-  - { name: ansiblels, enabled: "{{ 'devops' in modules }}" }
-  - { name: clangd, enabled: "{{ 'c' in modules or 'cpp' in modules }}" }
-  - { name: gopls, enabled: "{{ 'devops' in modules }}" }
-  - { name: pyright, enabled: "{{ 'python' in modules }}" }
-  - { name: rust_analyzer, enabled: "{{ 'rust' in modules }}" }
-  - { name: lua_ls, enabled: "{{ 'lua' in modules }}" }
-  - { name: astro, enabled: "{{ 'web' in modules }}" }
-  - { name: tailwindcss, enabled: "{{ 'web' in modules }}" }
-  - { name: tsserver, enabled: "{{ 'web' in modules }}" }
-  - { name: phpactor, enabled: "{{ 'php' in modules }}" }
-  - { name: volar, enabled: "{{ 'web' in modules }}" }
+neovim_lsp_servers:
+  - { name: ansiblels, enabled: "{{ 'devops' in neovim_modules }}" }
+  - { name: clangd, enabled: "{{ 'c' in neovim_modules or 'cpp' in neovim_modules }}" }
+  - { name: gopls, enabled: "{{ 'devops' in neovim_modules }}" }
+  - { name: pyright, enabled: "{{ 'python' in neovim_modules }}" }
+  - { name: rust_analyzer, enabled: "{{ 'rust' in neovim_modules }}" }
+  - { name: lua_ls, enabled: "{{ 'lua' in neovim_modules }}" }
+  - { name: astro, enabled: "{{ 'web' in neovim_modules }}" }
+  - { name: tailwindcss, enabled: "{{ 'web' in neovim_modules }}" }
+  - { name: tsserver, enabled: "{{ 'web' in neovim_modules }}" }
+  - { name: phpactor, enabled: "{{ 'php' in neovim_modules }}" }
+  - { name: volar, enabled: "{{ 'web' in neovim_modules }}" }
 
-lsp_dap_adapters:
-  - { name: python, enabled: "{{ 'python' in modules }}" }
-  - { name: js, enabled: "{{ 'web' in modules }}" }
+neovim_lsp_dap_adapters:
+  - { name: python, enabled: "{{ 'python' in neovim_modules }}" }
+  - { name: js, enabled: "{{ 'web' in neovim_modules }}" }
 
-lsp_prettier:
+neovim_lsp_prettier:
   - { name: "css", enabled: true }
   - { name: "astro", enabled: true }
   - { name: "html", enabled: true }

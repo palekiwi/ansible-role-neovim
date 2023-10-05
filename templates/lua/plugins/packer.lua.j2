@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   --> plugins start
-{% for item in plugins %}
+{% for item in neovim_plugins %}
   {% if item.enabled %}
   use {
     "{{ item.repo }}",

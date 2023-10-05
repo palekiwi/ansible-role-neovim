@@ -3,12 +3,12 @@
   hosts: all
 
   vars:
-    modules: ["c", "rust", "devops", "python", "web", "lua", "php"]
-    use_lsp: true
-    use_treesitter: true
-    plugin_manager: lazy
-    overwrite_mappings: true
-    use_codeium: true
+    neovim_modules: ["c", "rust", "devops", "python", "web", "lua", "php"]
+    neovim_use_lsp: true
+    neovim_use_treesitter: true
+    neovim_plugin_manager: lazy
+    neovim_overwrite_mappings: true
+    neovim_use_codeium: true
 
   tasks:
     - name: "Include palekiwi.neovim"
@@ -17,7 +17,7 @@
 
     - name: Cat contents of plugin config.
       ansible.builtin.command:
-        cmd: "cat ~/.config/nvim/lua/plugins/{{ plugin_manager }}.lua"
+        cmd: "cat ~/.config/nvim/lua/plugins/{{ neovim_plugin_manager }}.lua"
       changed_when: false
       register: pluginconfig
 

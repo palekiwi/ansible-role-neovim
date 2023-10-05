@@ -4,7 +4,7 @@
     name: "{{ item }}"
     state: present
   become: true
-  loop: "{{ system_packages }}"
+  loop: "{{ neovim_system_packages }}"
 
 - name: Ensure required directories exists.
   ansible.builtin.file:
@@ -12,20 +12,20 @@
     state: directory
     mode: "0755"
   loop:
-    - "{{ nvim_dir }}"
-    - "{{ config_dir }}"
-    - "{{ plugins_dir }}"
+    - "{{ neovim_base_dir }}"
+    - "{{ neovim_config_dir }}"
+    - "{{ neovim_plugins_dir }}"
 
 - name: Install requirements for language modules.
   ansible.builtin.import_tasks: "modules/main.yml"
 
 - name: Set up LSP
   ansible.builtin.import_tasks: "lsp.yml"
-  when: use_lsp
+  when: neovim_use_lsp
 
 - name: Set up TreeSitter
   ansible.builtin.import_tasks: "treesitter.yml"
-  when: use_treesitter
+  when: neovim_use_treesitter
 
 - name: Install config files
   ansible.builtin.import_tasks: "config.yml"
@@ -35,4 +35,4 @@
 
 - name: Clone snippets.
   ansible.builtin.import_tasks: "snippets.yml"
-  when: install_snippets
+  when: neovim_install_snippets

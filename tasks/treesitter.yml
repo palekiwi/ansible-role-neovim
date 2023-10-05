@@ -1,12 +1,12 @@
 ---
 - name: Add treesitter plugins to plugins.
   ansible.builtin.set_fact:
-    plugins: "{{ plugins + treesitter_plugins }}"
+    neovim_plugins: "{{ neovim_plugins + neovim_treesitter_plugins }}"
 
 - name: Ensure TreeSitter dependencies are installed.
   ansible.builtin.package:
     name: "{{ item.name }}"
     state: present
   become: true
-  loop: "{{ treesitter_system_packages }}"
+  loop: "{{ neovim_treesitter_system_packages }}"
   when: item.enabled

@@ -39,7 +39,7 @@ local prettier = require("prettier")
 prettier.setup({
   bin = 'prettier', -- or `'prettierd'` (v0.22+)
   filetypes = {
-    {% for item in lsp_prettier %}
+    {% for item in neovim_lsp_prettier %}
       {% if item.enabled %}
       "{{ item.name }}",
       {% endif %}

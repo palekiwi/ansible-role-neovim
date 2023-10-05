@@ -1,4 +1,4 @@
 ---
-system_packages:
+neovim_system_packages:
   - git
   - neovim
