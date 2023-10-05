@@ -76,6 +76,7 @@ neovim_plugins:
     event: "VeryLazy"
 
   - repo: lukas-reineke/indent-blankline.nvim
+    main: ibl
     enabled: true
     config:
       name: indent-blankline

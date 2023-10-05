@@ -11,6 +11,9 @@ require("lazy").setup({
       {% if item.branch is defined %}
       branch = "{{ item.branch }}",
       {% endif %}
+      {% if item.main is defined %}
+      main = "{{ item.main }}",
+      {% endif %}
       {% if item.build is defined %}
       build = "{{ item.build }}",
       {% endif %}
