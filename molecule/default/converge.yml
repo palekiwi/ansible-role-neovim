@@ -9,6 +9,7 @@
     neovim_plugin_manager: lazy
     neovim_overwrite_mappings: true
     neovim_use_codeium: true
+    neovim_install_system_packages: true
 
   tasks:
     - name: "Include palekiwi.neovim"

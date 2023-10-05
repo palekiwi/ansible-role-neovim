@@ -1,11 +1,4 @@
 ---
-- name: Ensure that essential packages are installed.
-  ansible.builtin.package:
-    name: "{{ item }}"
-    state: present
-  become: true
-  loop: "{{ neovim_system_packages }}"
-
 - name: Ensure required directories exists.
   ansible.builtin.file:
     path: "{{ item }}"
@@ -16,8 +9,9 @@
     - "{{ neovim_config_dir }}"
     - "{{ neovim_plugins_dir }}"
 
-- name: Install requirements for language modules.
-  ansible.builtin.import_tasks: "modules/main.yml"
+- name: Install system-level packages.
+  ansible.builtin.import_tasks: "system.yml"
+  when: neovim_install_system_packages
 
 - name: Set up LSP
   ansible.builtin.import_tasks: "lsp.yml"

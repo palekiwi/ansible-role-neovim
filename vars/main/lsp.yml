@@ -1,10 +1,3 @@
-neovim_lsp_system_packages:
-  - npm
-  - typescript
-  - prettier
-  - wget
-  - unzip
-
 neovim_lsp_plugins:
   - repo: jose-elias-alvarez/null-ls.nvim
     enabled: true
