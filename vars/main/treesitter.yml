@@ -31,5 +31,6 @@ neovim_treesitter_parsers:
   - { name: astro, enabled: "{{ 'web' in neovim_modules }}" }
   - { name: dockerfile, enabled: "{{ 'devops' in neovim_modules }}" }
   - { name: go, enabled: "{{ 'devops' in neovim_modules }}" }
+  - { name: ruby, enabled: "{{ 'devops' in neovim_modules }}" }
   - { name: php, enabled: "{{ 'php' in neovim_modules }}" }
   - { name: vue, enabled: "{{ 'web' in neovim_modules }}" }
