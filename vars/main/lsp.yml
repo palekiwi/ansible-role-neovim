@@ -73,8 +73,18 @@ neovim_lsp_plugins:
     config:
       name: nvim-dap-ui
 
+  - repo: someone-stole-my-name/yaml-companion.nvim
+    enabled: "{{ 'devops' in neovim_modules }}"
+    dependencies:
+      - neovim/nvim-lspconfig
+      - nvim-lua/plenary.nvim
+      - nvim-telescope/telescope.nvim
+    config:
+      name: yaml-companion
+
 neovim_lsp_servers:
   - { name: ansiblels, enabled: "{{ 'devops' in neovim_modules }}" }
+  - { name: yamlls, enabled: "{{ 'devops' in neovim_modules }}" }
   - { name: clangd, enabled: "{{ 'c' in neovim_modules or 'cpp' in neovim_modules }}" }
   - { name: gopls, enabled: "{{ 'devops' in neovim_modules }}" }
   - { name: ruby_ls, enabled: "{{ 'devops' in neovim_modules }}" }

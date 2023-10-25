@@ -58,7 +58,7 @@ neovim_plugins:
     enabled: true
 
   - repo: jackMort/ChatGPT.nvim
-    enabled: "{{ neovim_use_chatgpt }}"
+    enabled: true
     dependencies:
       - MunifTanjim/nui.nvim
       - nvim-lua/plenary.nvim
