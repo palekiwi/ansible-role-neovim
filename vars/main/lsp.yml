@@ -46,6 +46,9 @@ neovim_lsp_plugins:
   - repo: hrsh7th/cmp-nvim-lsp
     enabled: true
 
+  - repo: hrsh7th/cmp-nvim-lsp-signature-help
+    enabled: true
+
   - repo: saadparwaiz1/cmp_luasnip
     enabled: true
 
