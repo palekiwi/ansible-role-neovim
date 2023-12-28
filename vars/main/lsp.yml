@@ -1,5 +1,10 @@
 neovim_lsp_plugins:
   - repo: jose-elias-alvarez/null-ls.nvim
+    enabled: false
+    config:
+      name: "null-ls"
+
+  - repo: nvimtools/none-ls.nvim
     enabled: true
     config:
       name: "null-ls"
@@ -14,6 +19,14 @@ neovim_lsp_plugins:
     enabled: true
     config:
       name: "mason-lspconfig"
+
+  - repo: jay-babu/mason-null-ls.nvim
+    enabled: true
+    config:
+      name: "mason-null-ls"
+    dependencies:
+      - williamboman/mason.nvim
+      - nvimtools/none-ls.nvim
 
   - repo: jay-babu/mason-nvim-dap.nvim
     enabled: true
@@ -91,6 +104,7 @@ neovim_lsp_servers:
   - { name: clangd, enabled: "{{ 'c' in neovim_modules or 'cpp' in neovim_modules }}" }
   - { name: gopls, enabled: "{{ 'devops' in neovim_modules }}" }
   - { name: ruby_ls, enabled: "{{ 'devops' in neovim_modules }}" }
+  - { name: sqlls, enabled: "{{ 'devops' in neovim_modules }}" }
   - { name: pyright, enabled: "{{ 'python' in neovim_modules }}" }
   - { name: rust_analyzer, enabled: "{{ 'rust' in neovim_modules }}" }
   - { name: lua_ls, enabled: "{{ 'lua' in neovim_modules }}" }
@@ -99,6 +113,10 @@ neovim_lsp_servers:
   - { name: tsserver, enabled: "{{ 'web' in neovim_modules }}" }
   - { name: phpactor, enabled: "{{ 'php' in neovim_modules }}" }
   - { name: volar, enabled: "{{ 'web' in neovim_modules }}" }
+
+neovim_lsp_formatters:
+  - { name: pint, enabled: "{{ 'php' in neovim_modules }}" }
+  - { name: sql-formatter, enabled: "{{ 'devops' in neovim_modules }}" }
 
 neovim_lsp_dap_adapters:
   - { name: python, enabled: "{{ 'python' in neovim_modules }}" }

@@ -15,23 +15,3 @@
     - name: "Include palekiwi.neovim"
       ansible.builtin.include_role:
         name: "palekiwi.neovim"
-
-    - name: Cat contents of plugin config.
-      ansible.builtin.command:
-        cmd: "cat ~/.config/nvim/lua/plugins/{{ neovim_plugin_manager }}.lua"
-      changed_when: false
-      register: pluginconfig
-
-    - name: Cat contents of plugin config.
-      ansible.builtin.debug:
-        var: pluginconfig.stdout_lines
-
-    - name: Cat contents of init.lua
-      ansible.builtin.command:
-        cmd: "cat ~/.config/nvim/init.lua"
-      changed_when: false
-      register: init
-
-    - name: Cat contents of init.lua
-      ansible.builtin.debug:
-        var: init.stdout_lines
