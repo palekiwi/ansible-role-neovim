@@ -104,7 +104,6 @@ neovim_lsp_servers:
   - { name: clangd, enabled: "{{ 'c' in neovim_modules or 'cpp' in neovim_modules }}" }
   - { name: gopls, enabled: "{{ 'devops' in neovim_modules }}" }
   - { name: ruby_ls, enabled: "{{ 'devops' in neovim_modules }}" }
-  - { name: sqlls, enabled: "{{ 'devops' in neovim_modules }}" }
   - { name: pyright, enabled: "{{ 'python' in neovim_modules }}" }
   - { name: rust_analyzer, enabled: "{{ 'rust' in neovim_modules }}" }
   - { name: lua_ls, enabled: "{{ 'lua' in neovim_modules }}" }
@@ -116,6 +115,7 @@ neovim_lsp_servers:
 
 neovim_lsp_formatters:
   - { name: pint, enabled: "{{ 'php' in neovim_modules }}" }
+  - { name: golines, enabled: "{{ 'devops' in neovim_modules }}" }
   - { name: sql-formatter, enabled: "{{ 'devops' in neovim_modules }}" }
 
 neovim_lsp_dap_adapters:
